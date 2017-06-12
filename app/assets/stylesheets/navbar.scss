@@ -1,5 +1,6 @@
 $navbar-background-color: #044c93;
 $navbar-background-color-hover: #022f5a;
+$navbar-font-family: 'Russo One', sans-serif;
 
 .navbar-default {
     background-color: $navbar-background-color;
@@ -8,7 +9,7 @@ $navbar-background-color-hover: #022f5a;
 
 .navbar-default .navbar-brand {
     color: white;
-    font-family: 'Passion One', cursive;
+    font-family: $navbar-font-family;
     font-size: 32px;
 }
 
@@ -19,7 +20,7 @@ $navbar-background-color-hover: #022f5a;
 
 .navbar-default .navbar-nav > li > a {
     color: white;
-    font-family: 'Passion One', cursive;
+    font-family: $navbar-font-family;
     font-size: 20px;
 }
 
@@ -41,12 +42,12 @@ $navbar-background-color-hover: #022f5a;
 
 /* dropdown-menu */
 .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-	color: white;
-	font-family: 'Passion One', cursive;
+	color: $navbar-background-color-hover;
+	font-family: $navbar-font-family;
 }
 
 .navbar-nav .open .dropdown-menu {
-    background-color: $navbar-background-color;
+    background-color: white;
 }
 
 .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {

@@ -1,10 +1,12 @@
-$navbar-background-color: #044c93;
-$navbar-background-color-hover: #022f5a;
+$navbar-background-color: #292c2f;
+$navbar-background-color-hover: #666666;
 $navbar-font-family: 'Russo One', sans-serif;
 
 .navbar-default {
     background-color: $navbar-background-color;
     border-color: $navbar-background-color-hover;
+    margin-top: 0px;
+    margin-bottom: 0px;    
 }
 
 .navbar-default .navbar-brand {

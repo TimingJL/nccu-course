@@ -18,6 +18,9 @@ https://railsrubyblog.wordpress.com/2016/08/31/rails%E6%8E%A5%E6%94%B6json%E6%A0
 https://mgleon08.github.io/blog/2016/01/09/ruby-on-rails-json/
 https://github.com/rest-client/rest-client
 
+* Make table clickable
+https://stackoverflow.com/questions/4632738/how-to-add-hyperlink-to-table-row-tr
+
 * 國立政治大學通識課程架構表
 http://aca.nccu.edu.tw/download/formDownload/QP-T04-19-03.pdf
 

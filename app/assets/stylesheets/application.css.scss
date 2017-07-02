@@ -16,10 +16,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "navbar";
+@import "show";
 
 html, body {
     /* 設定body高度為100% 拉到視窗可視的大小 */
     height: 100%;
+    background: #F0F0F0;
 }
 
 #id_wrapper {

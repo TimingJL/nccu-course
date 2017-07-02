@@ -1,0 +1,15 @@
+<div class='container'>
+	<div class='show-page-box'>
+		<h3>課程名稱:</h3>
+		<h4><%= @course["name"] %></h4>
+
+		<h3>任課教師:</h3>
+		<h4><%= @course["instructor"] %></h4>
+
+		<h3>授課語言:</h3>
+		<h4><%= simple_format @course["language"] %></h4>
+
+		<h3>備註:</h3>
+		<h4><%= @course["note"] %></h4>			
+	</div>
+</div>

@@ -20,6 +20,9 @@ https://github.com/rest-client/rest-client
 
 * 國立政治大學通識課程架構表
 http://aca.nccu.edu.tw/download/formDownload/QP-T04-19-03.pdf
+
+* 政大課程查詢系統
+http://wa.nccu.edu.tw/QryTor/
 ------------------------------
 
 

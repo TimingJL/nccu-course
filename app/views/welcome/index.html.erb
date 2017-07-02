@@ -1,6 +1,6 @@
 <div id="banner">
 	<h1>政大選課</h1>
-	<p>Welcome Page</p>
-	<div class="welcome-button">Sign in</div>
-	<p><%= @name %></p>
+	<div><%= link_to courses_path, :action => 'go' do %>
+	    <div>Welcome</div>
+	<% end %></div>
 </div>

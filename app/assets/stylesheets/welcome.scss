@@ -25,10 +25,12 @@
 	div {
 	    color: white;
 	    text-align: center;
+	    line-height: 40px;
 	    background: #41cccc;//welcome button color
-	    width: 100px;
+	    width: 120px;
+	    height: 40px;
 	    margin:0px auto;//put div tag center
-	    padding: 5px;
+	    padding: 0px;
 	    border-radius:20px;
 	    font-size: 20px;  
 	    font-family: 'Russo One', sans-serif;
@@ -44,5 +46,9 @@
 	}
 	div:active {
 		background: rgba(250, 250, 250, 0.4);
+	}
+	a:hover, a:focus {
+	  color: #2a6496;
+	  text-decoration: none;
 	}	
 }

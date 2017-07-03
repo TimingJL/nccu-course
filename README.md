@@ -24,6 +24,9 @@ https://github.com/rest-client/rest-client
 * Make table clickable
 https://stackoverflow.com/questions/4632738/how-to-add-hyperlink-to-table-row-tr
 
+* Ruby on Rails - 整合 Devise 實作 Facebook 登入機制
+http://fisherliang.logdown.com/posts/301654-ruby-on-rails-real-facebook-login-mechanism
+
 * 國立政治大學通識課程架構表
 http://aca.nccu.edu.tw/download/formDownload/QP-T04-19-03.pdf
 

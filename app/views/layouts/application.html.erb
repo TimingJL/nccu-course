@@ -32,6 +32,11 @@
     	<%= render 'common/navbar' %>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
+      <% if user_signed_in? %>
+        <h4><%= current_user.uid %></h4>
+        <h4><%= current_user.email %></h4>
+        <h4><%= current_user.provider %></h4>
+      <% end %>
       <%= yield %>
       <div id="id_footer"><%= render 'common/footer' %></div>
     </div>

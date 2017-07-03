@@ -34,11 +34,11 @@
       <p class="alert"><%= alert %></p>
       <% if user_signed_in? %>
 
-          <h4><%= current_user.username %></h4>
+          <h4>first_name: <%= current_user.username %></h4>
 
-        <h4><%= current_user.uid %></h4>
-        <h4><%= current_user.email %></h4>
-        <h4><%= current_user.provider %></h4>
+        <h4>uid: <%= current_user.uid %></h4>
+        <h4>email: <%= current_user.email %></h4>
+        <h4>provider: <%= current_user.provider %></h4>
       <% end %>
       <%= yield %>
       <div id="id_footer"><%= render 'common/footer' %></div>

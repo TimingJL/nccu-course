@@ -16,9 +16,3 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function(){
-    $('table tr').click(function(){
-        window.location = $(this).attr('href');
-        return false;
-    });
-});

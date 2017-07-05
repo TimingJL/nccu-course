@@ -8,6 +8,13 @@ class CoursesController < ApplicationController
 	def show
 		@comments = Comment.all
 		@comment = Comment.new
+
+		@count = 0
+		@comments.each do |comment|
+			if comment.courseid == @course["courseid"].to_i
+				@count = @count + 1
+			end
+		end		
 	end
 
 	def new

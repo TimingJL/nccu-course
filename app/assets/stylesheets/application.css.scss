@@ -17,6 +17,7 @@
 @import "bootstrap";
 @import "navbar";
 @import "show";
+@import "showCommentform";
 
 html, body {
     /* 設定body高度為100% 拉到視窗可視的大小 */
@@ -33,7 +34,7 @@ html, body {
 
 #id_footer {
     /* 設定footer的高度 */
-    height: 20px;
+    height: 0px;
     box-sizing: border-box;
     /* 設定footer絕對位置在底部 */
     position: absolute;

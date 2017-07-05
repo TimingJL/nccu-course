@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  validates_presence_of :username # Can't empty.
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]

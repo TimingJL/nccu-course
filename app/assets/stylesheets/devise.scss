@@ -1,0 +1,19 @@
+.devise-background{
+	background-image: url(image_path("welcome-background.jpg"));
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: top center;
+	width: 100%;
+	min-height: 600px;
+	display: table;	
+}
+
+.login-box{
+    background: white;
+    border-radius:10px;
+    margin:50px auto;
+    padding: 30px;
+    box-shadow:4px 4px 12px -2px rgba(20%,20%,40%,0.5);
+    width: 350px;
+}
+

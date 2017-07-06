@@ -1,5 +1,5 @@
 # NCCU Course
-https://github.com/TimingJL/nccu-course
+https://nccu-course.herokuapp.com/users/sign_in
 
 # README
 

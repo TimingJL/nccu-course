@@ -23,9 +23,7 @@
 
   <div class='form-group'>
     <%= f.text_field :name, :class => 'form-control', :value => current_user.username %>
-    <%= f.text_area :content, placeholder:'想說的話......', :class => 'form-control' %>
-    <%= f.submit '留言', :class => 'btn btn-primary', :style => 'position:static; width:100%;border-radius:0px;' %>
-  </div>     
-   
-
+    <%= f.text_area :content, placeholder:'想說的話......', :class => 'form-control' %>    
+    <%= f.submit '留言', :class => 'btn btn-primary', :style => 'position:static; width:100%;border-radius:0px;' %>   
+  </div>      
 <% end %>

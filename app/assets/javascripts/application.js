@@ -16,3 +16,7 @@
 //= require turbolinks
 //= require_tree .
 
+var titanic = new Titanic({
+	hover: true, // auto animated on hover (default true)
+	click: true  // auto animated on click/tap (default false)
+});

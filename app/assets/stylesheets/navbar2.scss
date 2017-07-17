@@ -1,0 +1,58 @@
+.navbar-default {
+    background-image: url(image_path("7-6-ok-02.jpg"));
+    background-repeat: repeat;
+    border-style:none;
+}
+
+.navbar{
+	box-shadow:4px 4px 12px -2px rgba(20%,20%,40%,0.5);	
+}
+
+.navbar-default .navbar-brand {
+    color: white;
+    font-family: damion;
+}
+
+.navbar-default .navbar-nav > li > a {
+    font-family: damion;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+	font-family: damion;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #ffffff;
+  background-color: #77594B;
+}
+
+/* dropdown-menu */
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+	color: #77594B;
+	font-family: damion;
+}
+
+.navbar-nav .open .dropdown-menu {
+    background-color: white;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+  color: white;
+  background-color: #77594B;
+}
+
+.navbar-default .navbar-nav > li > a {
+    font-family: damion;
+    color: white;
+}
+
+/* Search button */ 
+#search-button{
+	background-color: #77594B;
+	color:white;
+}
+
+.input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group {
+    background-color: #77594B;
+}

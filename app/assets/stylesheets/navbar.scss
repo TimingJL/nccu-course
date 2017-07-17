@@ -4,10 +4,12 @@ $navbar-font-family: 'Russo One', sans-serif;
 
 .navbar-default {
     background-color: $navbar-background-color;
+    background-repeat: repeat; 
+
     border-color: $navbar-background-color-hover;
     border-width: 0px;
     margin-top: 0px;
-    margin-bottom: 0px;   
+    margin-bottom: 0px;
 }
 
 .navbar-default .navbar-brand {

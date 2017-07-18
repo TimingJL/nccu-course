@@ -1,20 +1,25 @@
 class CoursesController < ApplicationController
-	before_action :get_courses_data, only: [:index, :show]
+	#before_action :if_search_course
+	before_action :get_courses_data
 	before_action :find_course, only: [:show]
 
-	def index
+	def index	
 	end
 
 	def show
+		if params[:search]
+			render :index
+		end
+
 		@comments = Comment.all
 		@comment = Comment.new
 
 		@count = 0
-		@comments.each do |comment|
-			if comment.courseid == @course["courseid"].to_i
-				@count = @count + 1
-			end
-		end		
+		#@comments.each do |comment|
+		#	if comment.courseid == @course["courseid"].to_i
+		#		@count = @count + 1
+		#	end
+		#end		
 	end
 
 	def new
@@ -41,15 +46,46 @@ class CoursesController < ApplicationController
 	  	require 'rest-client'
 	  	url = 'https://raw.githubusercontent.com/TimingJL/nccu-course/master/data/testData.json'
 	  	raw_content = RestClient.get(url)
-	  	@data = JSON.parse( raw_content )		
+	  	@tempdata = JSON.parse( raw_content )
+	  	@data = []
+
+	  	# Search
+	  	if params[:search]
+			@tempdata.each do |d|
+				if (d["semester"].include?params[:search]) || 
+					(d["courseid"].include?params[:search])	||
+					(d["name"].include?params[:search]) || 
+					(d["instructor"].include?params[:search]) || 
+					(d["point"].include?params[:search]) || 
+					(d["session"].include?params[:search]) || 
+					(d["place"].include?params[:search]) || 
+					(d["language"].include?params[:search]) || 
+					(d["asgeneral"].include?params[:search]) || 
+					(d["generalclass"].include?params[:search]) || 
+					(d["length"].include?params[:search]) || 
+					(d["choose"].include?params[:search]) || 
+					(d["coregeneral"].include?params[:search]) || 
+					(d["change"].include?params[:search]) || 
+					(d["note"].include?params[:search])
+					@data.push(d)
+				end
+			end
+		elsif params[:search].blank?
+			@data = JSON.parse( raw_content )
+	  	end
 	end
 
 	def find_course
-		@course  = @data[params[:id].to_i]
+		#@course  = @data[params[:id].to_i]
+		@data.each do |d|
+			if d["courseid"].to_i == params[:id].to_i
+				@course = d
+			end
+		end
 	end
 
 	# Never trust parameters from the scary internet, only allow the white list through.
 	def comment_params
-	  params.require(:comment).permit(:content, :courseid, :user, :name)
+		params.require(:comment).permit(:content, :courseid, :user, :name)
 	end	
 end

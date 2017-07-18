@@ -32,7 +32,8 @@
       <form class="navbar-form navbar-left">
         <div class="col-lg-6">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for..." style='width:300px;'>
+            <!--<input type="text" class="form-control" :search, params[:search], placeholder="Search for..." style='width:300px;'> -->
+            <%= text_field_tag :search, params[:search], placeholder: "Search...", class: "form-control" ,style: "width:300px" %>
             <span class="input-group-btn">
               <button class="btn btn-secondary" type="submit" style='color:white;'><i class="fa fa-search" aria-hidden="true"></i></button>
             </span>

@@ -17,6 +17,7 @@
 
 		<h4 style='color:gray; text-align: center;'><%= @count %> 則留言</h4>
 
+	
 		<% @comments.each do |comment| %>
 				<% if comment.courseid == @course["courseid"].to_i %>
 					<div class='comment-content-box'>
@@ -40,7 +41,7 @@
 					</div>
 				<% end %>							
 		<% end %>
-		<%= render 'comments/showCommentform.html', comment: @comment %>		
+		<%= render 'comments/showCommentform.html', comment: @comment %>	
 		<p><%= link_to 'Back', courses_path %></p>
 	</div>
 </div>

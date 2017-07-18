@@ -21,7 +21,7 @@
 	    </thead>
 	    <tbody>
 			<% @data.each do |d| %>
-				<tr href="<%= course_path(@data.index(d)) %>" style='cursor:pointer;'>
+				<tr href="<%= course_path(d["courseid"]) %>" style='cursor:pointer;'>
 					<td><%= d["semester"] %></td>
 					<td><%= d["courseid"] %></td>
 					<td><%= d["name"] %></td>

@@ -1,0 +1,46 @@
+<div class='container'>
+	<div class='show-page-box'>
+		<h3>課程名稱:</h3>
+		<h4><%= @course["name"] %></h4>
+
+		<h3>任課教師:</h3>
+		<h4><%= @course["instructor"] %></h4>
+
+		<h3>授課語言:</h3>
+		<h4><%= simple_format @course["language"] %></h4>
+
+		<h3>備註:</h3>
+		<h4><%= @course["note"] %></h4>
+	
+		<p><%= link_to 'Back', courses_path %></p>
+	</div>
+
+	<div class='show-page-box'>
+		<h4 style='color:gray; text-align: center;'><%= @count %> 則留言</h4>
+		<%= render 'comments/showCommentform.html', comment: @comment %>
+		<% @comments.each do |comment| %>
+				<% if comment.courseid == @course["courseid"].to_i %>
+					<div class='comment-content-box'>
+						<table>
+							<tr>
+								<td style='width:80px'><div style='width:50px;height:50px;background:red;color:white;'><%= comment.name %></div></td>
+								<td><%= comment.content %></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><%= time_ago_in_words(comment.created_at) %> ago</td>
+							</tr>												
+							<tr>
+								<td></td>
+								<td>
+									<%= link_to 'Edit', edit_comment_path(comment) %> |	
+									<%= link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %>	
+								</td>
+							</tr>						
+						</table>
+					</div>
+				<% end %>							
+		<% end %>			
+		<p><%= link_to 'Back', courses_path %></p>
+	</div>	
+</div>

@@ -10,7 +10,17 @@
       </button>
       <a class="navbar-brand" href="<%= courses_path %>">NCCU<span class='navbar-brand-course'>course</span></a>
     </div>
-
+      <form class="navbar-form navbar-left">
+        <div class="col-lg-6">
+          <div class="input-group">
+            <!--<input type="text" class="form-control" :search, params[:search], placeholder="Search for..." style='width:300px;'> -->
+            <div><%= text_field_tag :search, params[:search], placeholder: "Search...", class: "form-control" ,style: "width:100%;min-width:250px;" %></div>
+            <span class="input-group-btn">
+              <button class="btn btn-secondary" type="submit" style='color:white;'><i class="fa fa-search" aria-hidden="true"></i></button>
+            </span>
+          </div>
+        </div> 
+      </form>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <!--<ul class="nav navbar-nav">
@@ -29,18 +39,7 @@
           </ul>
         </li>
       </ul>-->
-      <form class="navbar-form navbar-left">
-        <div class="col-lg-6">
-          <div class="input-group">
-            <!--<input type="text" class="form-control" :search, params[:search], placeholder="Search for..." style='width:300px;'> -->
-            <%= text_field_tag :search, params[:search], placeholder: "Search...", class: "form-control" ,style: "width:300px" %>
-            <span class="input-group-btn">
-              <button class="btn btn-secondary" type="submit" style='color:white;'><i class="fa fa-search" aria-hidden="true"></i></button>
-            </span>
-          </div>
-        </div> 
 
-      </form>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li>

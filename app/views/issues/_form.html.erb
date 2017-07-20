@@ -1,0 +1,50 @@
+<%= form_for(issue) do |f| %>
+  <% if issue.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(issue.errors.count, "error") %> prohibited this issue from being saved:</h2>
+
+      <ul>
+      <% issue.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title, :class => 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_area :content, :class => 'form-control' %>
+  </div>
+
+  <div class="field" style='visibility: hidden;padding: 0px;margin: 0px;font-size: 0px;height: 0px;'>
+    <%= f.label :courseid %>
+    <!-- <%= f.number_field :courseid %> -->
+    <%= f.number_field :courseid, :class => 'form-control', :value => params[:id] %>
+  </div>
+
+  <!--<div class="field">
+    <%= f.label :user %>  user id 
+    <%= f.text_field :user %> 
+    <%= f.text_field :user, :class => 'form-control', :value => current_user.id %>
+  </div>-->
+
+  <div class="field">
+    <%= f.label :username %>
+    <!-- <%= f.text_field :username %> -->
+    <%= f.text_field :username, :class => 'form-control', :value => current_user.username %>
+  </div>
+
+  <div class="field" style='visibility: hidden;padding: 0px;margin: 0px;font-size: 0px;height: 0px;'>
+    <%= f.label :useremail %>
+    <%= f.text_field :useremail, :class => 'form-control', :value => current_user.email %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

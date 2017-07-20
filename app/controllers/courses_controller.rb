@@ -2,6 +2,7 @@ class CoursesController < ApplicationController
 	#before_action :if_search_course
 	before_action :get_courses_data
 	before_action :find_course, only: [:show]
+	before_action :set_issue, only: [:show, :edit, :update, :destroy]
 
 	def index	
 	end
@@ -19,7 +20,10 @@ class CoursesController < ApplicationController
 		#	if comment.courseid == @course["courseid"].to_i
 		#		@count = @count + 1
 		#	end
-		#end		
+		#end	
+
+		@issues = Issue.all
+		@issue = Issue.new
 	end
 
 	def new
@@ -87,5 +91,15 @@ class CoursesController < ApplicationController
 	# Never trust parameters from the scary internet, only allow the white list through.
 	def comment_params
 		params.require(:comment).permit(:content, :courseid, :user, :name)
-	end	
+	end
+
+    # Use callbacks to share common setup or constraints between actions.
+    def set_issue
+      #@issue = Issue.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def issue_params
+      params.require(:issue).permit(:title, :content, :courseid, :user, :username, :useremail)
+    end	
 end

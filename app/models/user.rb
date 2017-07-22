@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   def self.from_omniauth(auth)
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
         url = "https://graph.facebook.com/" + 
-              auth.uid.to_s + 
+              (auth.uid).to_s + 
               "?fields=name&access_token=EAAGh9CnwADwBAEmfDv9R9bw2mQiR8s9Cz4uvq8oshGvm1ijpabIxmkenYuB0DYRzkug0gw5ZAnaTBvkBARVUtiwsjMA36UUAQlZCWkoPYWaJBeCstWc0ZCVaK6gXO1wAPogEgEXkqLhjIV4osx4EVSAw21s4ZBEdu7KEwsxcQz75epsEZBP7UlmyfrDdSSdMZD"
         raw_content = RestClient.get(url)
         fbData = JSON.parse(raw_content)
@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
         user.uid = auth.uid
         user.email = auth.info.email
         user.password = Devise.friendly_token[0,20]
-        #user.username = auth.info.name
+        # user.username = auth.info.name
         user.username = url
         user.save
       end

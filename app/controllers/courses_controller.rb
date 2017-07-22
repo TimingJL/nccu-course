@@ -34,6 +34,7 @@ class CoursesController < ApplicationController
 	              "?fields=name&access_token=EAAGh9CnwADwBAEmfDv9R9bw2mQiR8s9Cz4uvq8oshGvm1ijpabIxmkenYuB0DYRzkug0gw5ZAnaTBvkBARVUtiwsjMA36UUAQlZCWkoPYWaJBeCstWc0ZCVaK6gXO1wAPogEgEXkqLhjIV4osx4EVSAw21s4ZBEdu7KEwsxcQz75epsEZBP7UlmyfrDdSSdMZD"
 	        @raw_content = RestClient.get(@fburl)
 	        @fbData = JSON.parse(@raw_content)
+	        @fbPhotoUrl = "http://graph.facebook.com/"+@fbData["id"].to_s+"/picture"
 	    else
 	    	@fburl = "no url"
 	    	@raw_content = " no raw_content"

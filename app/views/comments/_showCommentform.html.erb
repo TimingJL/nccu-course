@@ -12,8 +12,13 @@
   <% end %>
 
   <div class="field" style='visibility: hidden;padding: 0px;margin: 0px;font-size: 0px;height: 0px;'>
+    <%= f.label :issue_id %>
+    <%= f.number_field :issue_id, :value => params[:id] %>
+  </div>
+
+  <div class="field" style='visibility: hidden;padding: 0px;margin: 0px;font-size: 0px;height: 0px;'>
     <%= f.label :courseid %>
-    <%= f.number_field :courseid, :value => @course["courseid"].to_i %>
+    <%= f.number_field :courseid, :value => @issue.courseid %>
   </div>
 
   <div class="field" style='visibility: hidden;padding: 0px;margin: 0px;font-size: 0px;height: 0px;'>

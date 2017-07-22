@@ -1,25 +1,27 @@
 <% @issues.each do |issue| %>
 	<% if issue.courseid == params[:id].to_i %>
-		<a href="#">
-		<div class='comment-content-box'>
-			<table>
-				<tr>
-					<td style='width:80px'><div style='width:50px;height:50px;background:red;color:white;'><%= issue.username %></div></td>
-					<td><%= issue.title %></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td><%= time_ago_in_words(issue.created_at) %> ago</td>
-				</tr>												
-				<tr>
-					<td></td>
-					<td>
-						<%= link_to 'Edit', edit_issue_path(issue) %> |	
-						<%= link_to 'Delete', issue, method: :delete, data: { confirm: 'Are you sure?' } %>	
-					</td>
-				</tr>						
-			</table>
-		</div>	
-		</a>	
+		<%= link_to(issue) do %>
+			<div class='comment-content-box'>
+				<table>
+					<tr>
+						<td style='width:80px'><div style='width:50px;height:50px;background:red;color:white;'><%= issue.username %></div></td>
+						<td><%= issue.title %></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><%= time_ago_in_words(issue.created_at) %> ago</td>
+					</tr>
+					<% if issue.user == current_user %>
+						<tr>
+							<td></td>
+							<td>
+								<%= link_to 'Edit', edit_issue_path(issue) %> |	
+								<%= link_to 'Delete', issue, method: :delete, data: { confirm: 'Are you sure?' } %>	
+							</td>
+						</tr>
+					<% end %>						
+				</table>
+			</div>	
+		<% end %>	
 	<% end %>
 <% end %>

@@ -12,13 +12,13 @@
 		<h3>備註:</h3>
 		<h4><%= @course["note"] %></h4>
 	
-		<p><%= link_to 'Back', courses_path %></p>
+		<!-- <p><%= link_to 'Back', courses_path %></p> -->
 	</div>
 
 	<div class='show-page-box'>
 		<h4 style='color:gray; text-align: center;'><%= @count %> 則留言</h4>
 		<%= render 'common/issue.html' %>
 		<%= render 'issues/form.html', issue: @issue %>		
-		<p><%= link_to 'Back', courses_path %></p>
+		<!-- <p><%= link_to 'Back', courses_path %></p> -->
 	</div>	
 </div>

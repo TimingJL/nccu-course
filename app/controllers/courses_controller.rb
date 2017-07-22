@@ -12,36 +12,11 @@ class CoursesController < ApplicationController
 			render :index
 		end
 
-		@comments = Comment.all
-		@comment = Comment.new
-
-		@count = 0
-		#@comments.each do |comment|
-		#	if comment.courseid == @course["courseid"].to_i
-		#		@count = @count + 1
-		#	end
-		#end	
-
 		@issues = Issue.all
 		@issue = Issue.new
 	end
 
 	def new
-		@comment = Comment.new
-	end
-
-	def create
-	    @comment = Comment.new(comment_params)
-
-	    respond_to do |format|
-	      if @comment.save
-	        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-	        format.json { render :show, status: :created, location: @comment }
-	      else
-	        format.html { render :new }
-	        format.json { render json: @comment.errors, status: :unprocessable_entity }
-	      end
-	    end
 	end
 
 	private
@@ -86,11 +61,6 @@ class CoursesController < ApplicationController
 				@course = d
 			end
 		end
-	end
-
-	# Never trust parameters from the scary internet, only allow the white list through.
-	def comment_params
-		params.require(:comment).permit(:content, :courseid, :user, :name)
 	end
 
     # Use callbacks to share common setup or constraints between actions.

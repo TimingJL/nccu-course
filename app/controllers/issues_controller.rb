@@ -1,5 +1,5 @@
 class IssuesController < ApplicationController
-  before_action :set_issue, only: [:show, :edit, :update, :destroy]
+  before_action :set_issue, only: [:new, :show, :edit, :update, :destroy]
   before_action :get_courses_data
 
   # GET /issues
@@ -11,6 +11,8 @@ class IssuesController < ApplicationController
   # GET /issues/1
   # GET /issues/1.json
   def show
+    @comments = Comment.all
+    @comment = Comment.new
   end
 
   # GET /issues/new

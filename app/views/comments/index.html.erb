@@ -6,8 +6,8 @@
   <thead>
     <tr>
       <th>Content</th>
-      <th>Courseid</th>
-      <th>User</th>
+<!--       <th>Courseid</th>
+      <th>User</th> -->
       <th>Name</th>
       <th colspan="3"></th>
     </tr>
@@ -17,12 +17,12 @@
     <% @comments.each do |comment| %>
       <tr>
         <td><%= comment.content %></td>
-        <td><%= comment.courseid %></td>
-        <td><%= comment.user %></td>
+<!--         <td><%= comment.courseid %></td>
+        <td><%= comment.user %></td> -->
         <td><%= comment.name %></td>
-        <td><%= link_to 'Show', comment %></td>
+<!--         <td><%= link_to 'Show', comment %></td>
         <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Comment', new_comment_path %>
+<!-- <%= link_to 'New Comment', new_comment_path %> -->

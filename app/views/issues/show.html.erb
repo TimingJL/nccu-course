@@ -1,34 +1,72 @@
-<p id="notice"><%= notice %></p>
+<div class='issue-show-page-box'>
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @issue.title %>
-</p>
+    <p>
+      <strong>Title:</strong>
+      <%= @issue.title %>
+    </p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @issue.content %>
-</p>
+    <p>
+      <strong>Content:</strong>
+      <%= @issue.content %>
+    </p>
 
-<p>
-  <strong>Courseid:</strong>
-  <%= @issue.courseid %>
-</p>
+    <p>
+      <strong>Username:</strong>
+      <%= @issue.username %>
+    </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @issue.user %>
-</p>
+    <!--
+    <p>
+      <strong>Courseid:</strong>
+      <%= @issue.courseid %>
+    </p>
 
-<p>
-  <strong>Username:</strong>
-  <%= @issue.username %>
-</p>
+    <p>
+      <strong>User:</strong>
+      <%= @issue.user %>
+    </p>
 
-<p>
-  <strong>Useremail:</strong>
-  <%= @issue.useremail %>
-</p>
+    <p>
+      <strong>Useremail:</strong>
+      <%= @issue.useremail %>
+    </p>
+    -->
+    <% if @issue.user == current_user %>
+      <%= link_to 'Edit', edit_issue_path(@issue) %> <!--|
+      <%= link_to 'Back', issues_path %> -->
+    <% end %>
+</div>
 
-<%= link_to 'Edit', edit_issue_path(@issue) %> |
-<%= link_to 'Back', issues_path %>
+
+
+<div class='issue-show-page-box'>
+
+<% @comments.each do |comment| %>
+    <% if comment.courseid == @issue.courseid %>
+        <div class='comment-content-box'>
+            <table>
+                <tr>
+                    <td style='width:80px'><div style='width:50px;height:50px;background:red;color:white;'><%= comment.name %></div></td>
+                    <td><%= comment.content %></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><%= time_ago_in_words(comment.created_at) %> ago</td>
+                </tr> 
+                <% if comment.user == current_user %>                           
+                    <tr>
+                        <td></td>
+                        <td>
+                            <%= link_to 'Edit', edit_comment_path(comment) %> | 
+                            <%= link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %> 
+                        </td>
+                    </tr>
+                <% end %>                     
+            </table>
+        </div> 
+    <% end %>
+<% end %>
+
+<%= render 'comments/showCommentform', comment: @comment %>
+</div>

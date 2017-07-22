@@ -8,11 +8,11 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-        url = "https://graph.facebook.com/" + 
-              (auth.uid).to_s + 
-              "?fields=name&access_token=EAAGh9CnwADwBAEmfDv9R9bw2mQiR8s9Cz4uvq8oshGvm1ijpabIxmkenYuB0DYRzkug0gw5ZAnaTBvkBARVUtiwsjMA36UUAQlZCWkoPYWaJBeCstWc0ZCVaK6gXO1wAPogEgEXkqLhjIV4osx4EVSAw21s4ZBEdu7KEwsxcQz75epsEZBP7UlmyfrDdSSdMZD"
-        raw_content = RestClient.get(url)
-        fbData = JSON.parse(raw_content)
+        # url = "https://graph.facebook.com/" + 
+        #       (auth.uid).to_s + 
+        #       "?fields=name&access_token=EAAGh9CnwADwBAEmfDv9R9bw2mQiR8s9Cz4uvq8oshGvm1ijpabIxmkenYuB0DYRzkug0gw5ZAnaTBvkBARVUtiwsjMA36UUAQlZCWkoPYWaJBeCstWc0ZCVaK6gXO1wAPogEgEXkqLhjIV4osx4EVSAw21s4ZBEdu7KEwsxcQz75epsEZBP7UlmyfrDdSSdMZD"
+        # raw_content = RestClient.get(url)
+        # fbData = JSON.parse(raw_content)
 
         user.provider = auth.provider
         user.uid = auth.uid

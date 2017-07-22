@@ -30,6 +30,9 @@ http://fisherliang.logdown.com/posts/301654-ruby-on-rails-real-facebook-login-me
 * Add name field to devise
 https://github.com/TimingJL/raddit
 
+* Rails - How To Destroy Users Created Under Devise?
+https://stackoverflow.com/questions/16289299/rails-how-to-destroy-users-created-under-devise
+
 * 國立政治大學通識課程架構表
 http://aca.nccu.edu.tw/download/formDownload/QP-T04-19-03.pdf
 

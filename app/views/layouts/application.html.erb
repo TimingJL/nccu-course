@@ -36,6 +36,7 @@
       <p class="alert"><%= alert %></p> -->
       <br/><br/><br/><br/>
       <% if user_signed_in? %>
+        <h4>name: <%= current_user.username %></h4>
         <h4>first_name: <%= current_user.username %></h4>
         <h4>uid: <%= current_user.uid %></h4>
         <h4>email: <%= current_user.email %></h4>

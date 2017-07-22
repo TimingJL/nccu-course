@@ -1,4 +1,9 @@
 <div class='container'>
+	<% if current_user.uid.present? %>
+		<div>@fburl = <% @fburl %></div>
+		<div>@fbData = <% @fbData %></div>
+		<div>FB username = <% @fbData["name"] %></div>
+	<% end %>
 	<table class="table table-hover">
 	    <thead>
 	      <tr>

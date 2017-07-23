@@ -1,0 +1,24 @@
+<%= form_for(@user) do |f| %>
+
+  <div class="form-group">
+    <%= f.label :username %>
+    <%= f.text_field :username, class: "form-control", :autofocus => true %>
+  </div>  
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.check_box :admin, autofocus: true %>
+    <%= f.label :admin %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+
+<%= link_to "Back", users_path %>

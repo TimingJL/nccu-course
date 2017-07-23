@@ -1,5 +1,7 @@
 <% @users.each do |user| %>
-	<div><%= user.username %></div>
-	<div><%= user.email %></div>
+	<div>User name: <%= user.username %></div>
+	<div>Email: <%= user.email %></div>
+	<div>Is Admin? :<%= user.admin %></div>
+	<div><%= link_to "Edit", admin_edit_user_path(user) %></div>
 	<div><%= link_to "Destroy", admin_destroy_user_path(user), method: :delete, data: { confirm: "You sure?" } %></div>
 <% end %>

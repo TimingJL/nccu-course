@@ -14,6 +14,7 @@ gem 'rest-client'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'rails_admin', '~> 1.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'

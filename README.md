@@ -33,6 +33,18 @@ https://github.com/TimingJL/raddit
 * Rails - How To Destroy Users Created Under Devise?
 https://stackoverflow.com/questions/16289299/rails-how-to-destroy-users-created-under-devise
 
+* Devise Tutorials
+https://github.com/danweller18/devise/wiki
+
+* RailsAdmin
+https://github.com/rails-admin/rails_admin
+
+* Authorization
+https://ihower.tw/rails/auth.html
+
+* JDENTICON(Open source library for generating identicons)隨機大頭貼
+https://jdenticon.com/js-get-started.html
+
 * 國立政治大學通識課程架構表
 http://aca.nccu.edu.tw/download/formDownload/QP-T04-19-03.pdf
 

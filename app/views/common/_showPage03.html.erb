@@ -1,0 +1,35 @@
+<div class='row'>
+	<div class='container'>
+		<div class='col-md-4'>
+			<div class='show-page-box'>
+				<div class='header'></div>
+				<div class='content'>
+					<h3>課程名稱:</h3>
+					<h4><%= @course["name"] %></h4>
+
+					<h3>任課教師:</h3>
+					<h4><%= @course["instructor"] %></h4>
+
+					<h3>授課語言:</h3>
+					<h4><%= simple_format @course["language"] %></h4>
+
+					<h3>備註:</h3>
+					<h4><%= @course["note"] %></h4>
+				
+					<!-- <p><%= link_to 'Back', courses_path %></p> -->					
+				</div>
+			</div>			
+		</div>
+		<div class='col-md-8'>
+			<div class='show-page-box'>
+				<div class='header'></div>
+				<div class='content'>
+					<h4 style='color:gray; text-align: center;'><%= @count %> 則留言</h4>
+					<%= render 'common/issue.html' %>
+					<%= render 'issues/form.html', issue: @issue %>		
+					<!-- <p><%= link_to 'Back', courses_path %></p> -->				
+				</div>
+			</div>			
+		</div>
+	</div>
+</div>

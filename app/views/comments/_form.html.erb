@@ -11,27 +11,24 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :content %>
-    <%= f.text_area :content %>
+  <div class="field" style='visibility: hidden;padding: 0px;margin: 0px;font-size: 0px;height: 0px;'>
+    <%= f.label :courseid %>
+    <%= f.number_field :courseid, :value => params[:courseid] %>
   </div>
 
   <div class="field" style='visibility: hidden;padding: 0px;margin: 0px;font-size: 0px;height: 0px;'>
-    <%= f.label :courseid %>
-    <%= f.number_field :courseid %>
+    <%= f.label :issue_id %>
+    <%= f.text_field :issue_id, :value => params[:issue_id] %>
   </div>
 
   <div class="field" style='visibility: hidden;padding: 0px;margin: 0px;font-size: 0px;height: 0px;'>
     <%= f.label :user %>
-    <%= f.text_field :user %>
+    <%= f.text_field :user, :value => current_user.id %>
   </div>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <div class='form-group'>
+    <%= f.text_field :name, :class => 'form-control', :value => current_user.username %>
+    <%= f.text_area :content, placeholder:'想說的話......', :class => 'form-control' %>    
+    <%= f.submit '留言', :class => 'btn btn-primary', :style => 'position:static; width:100%;border-radius:0px;' %>   
+  </div>      
 <% end %>

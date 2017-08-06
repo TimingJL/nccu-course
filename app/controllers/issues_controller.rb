@@ -30,6 +30,10 @@ class IssuesController < ApplicationController
     @issue = Issue.new(issue_params)
     @issue.user_id = current_user.id if current_user
 
+    if @issue.content == "" || @issue.username == ""
+      return
+    end
+
     respond_to do |format|
       if @issue.save
         #format.html { redirect_to @issue, notice: 'Issue was successfully created.' }
@@ -47,7 +51,7 @@ class IssuesController < ApplicationController
   def update
     respond_to do |format|
       if @issue.update(issue_params)
-        format.html { redirect_to @issue, notice: 'Issue was successfully updated.' }
+        format.html { redirect_to course_path(@issue.courseid), notice: 'Issue was successfully updated.' }
         format.json { render :show, status: :ok, location: @issue }
       else
         format.html { render :edit }
@@ -59,9 +63,10 @@ class IssuesController < ApplicationController
   # DELETE /issues/1
   # DELETE /issues/1.json
   def destroy
+    courseid = @issue.courseid
     @issue.destroy
     respond_to do |format|
-      format.html { redirect_to issues_url, notice: 'Issue was successfully destroyed.' }
+      format.html { redirect_to course_path(courseid), notice: 'Issue was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

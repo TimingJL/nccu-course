@@ -3,10 +3,21 @@
 	border-radius:0px;
 }
 
-.comment-content-box{
-	background: #ECECFF;
+.issue-content-box{
+	//background: #FFECEC;
+	background: white;
 	padding: 10px;
 	margin-top: 10px;
 	margin-bottom: 10px;
+	border-radius: 5px;
+}
+
+.comment-content-box{
+	background-color: white;
+	padding: 10px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	margin-right: 20px;
+	margin-left: 20px;
 	border-radius: 5px;
 }

@@ -24,9 +24,11 @@
 			<div class='show-page-box'>
 				<div class='header'></div>
 				<div class='content'>
-					<h4 style='color:gray; text-align: center;'><%= @count %> 則留言</h4>
+					<!-- <h4 style='color:gray; text-align: center;'><%= @count %> 則留言</h4> -->
+					<br>
+					<%= render 'issues/form.html', issue: @issue %>							
 					<%= render 'common/issue.html' %>
-					<%= render 'issues/form.html', issue: @issue %>		
+
 					<!-- <p><%= link_to 'Back', courses_path %></p> -->				
 				</div>
 			</div>			

@@ -1,62 +1,57 @@
+<!-- JDENTICON(Open source library for generating identicons) -->
+<script src="https://cdn.jsdelivr.net/npm/jdenticon@1.7.2" async></script>
+
 <% @issues.each do |issue| %>
 	<% if issue.courseid == params[:id].to_i %>
-		<%= link_to(issue) do %>
-			<div class='comment-content-box'>
-				<p>issue.courseid: <%= issue.courseid %>  </p>
-				<p>issue.issue_id: <%= issue.id %></p>  			
-				<table>
+			<div class='issue-content-box'>
+				<table border="0" width='100%;'>
 					<tr>
-						<td style='width:80px'><div style='width:50px;height:50px;background:red;color:white;'><%= issue.username %></div></td>
-						<td><%= issue.title %></td>
+						<td style='vertical-align: text-top; width:60px'><canvas style='background-color: white;border-radius: 100%;' width="50" height="50" data-jdenticon-value="<%= issue.username %>"></canvas></td>
+						<td>
+							<div style='font-weight: bold;font-size: 16px;'><%= issue.username %></div>
+								<div style='font-size: 16px;margin-top:5px;margin-bottom:5px;'><%= issue.content %></div>
+								<% if issue.user == current_user %>
+									<%= link_to 'Edit', edit_issue_path(issue, :courseid => issue.courseid, :issue_id => issue.id) %> · 
+									<%= link_to 'Delete', issue, method: :delete, data: { confirm: 'Are you sure?' } %> · 
+								<% end %>								
+								<%= link_to '回覆', new_comment_path(:courseid => issue.courseid, :issue_id => issue.id) %> · <%= time_ago_in_words(issue.created_at) %> ago
+						</td>
 					</tr>
-					<tr>
-						<td></td>
-						<td><%= time_ago_in_words(issue.created_at) %> ago</td>
-					</tr>
-					<% if issue.user == current_user %>
-						<tr>
-							<td></td>
-							<td>
-								<%= link_to 'Edit', edit_issue_path(issue) %> |	
-								<%= link_to 'Delete', issue, method: :delete, data: { confirm: 'Are you sure?' } %>	
-							</td>
-						</tr>
-					<% end %>					
 				</table>
-				<%= link_to '回覆', new_comment_path(:courseid => issue.courseid, :issue_id => issue.id) %>	
-			</div>
 
-			<% @comments = Comment.all %>
-			<% @comments.each do |comment| %>
-			    <% if comment.issue_id.to_i == issue.id.to_i %>
-			        <div class='comment-content-box'>
-		                <p>comment.courseid: <%= comment.courseid %>  </p>
-		                <p>comment.issue_id: <%= comment.issue_id %></p>
-		                <p>issue.courseid: <%= issue.courseid %>  </p>
-		                <p>issue.issue_id: <%= issue.id %></p>  			        
-			            <table>
-			            	<tr>
-			                    <td style='width:80px'><div style='width:50px;height:50px;background:blue;color:white;'><%= comment.name %></div></td>
-			                    <td><%= comment.content %></td>
-			                </tr>
-			                <tr>
-			                    <td></td>
-			                    <td><%= time_ago_in_words(comment.created_at) %> ago</td>
-			                </tr> 
-			                <% if comment.user == current_user %>                           
-			                    <tr>
-			                        <td></td>
-			                        <td>
-			                            <%= link_to 'Edit', edit_comment_path(comment) %> | 
-			                            <%= link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %> 
-			                        </td>
-			                    </tr>
-			                <% end %>                     
-			            </table>
-			        </div> 
-			    <% end %>
-			<% end %>
+				<% @comments = Comment.all %>
+				<% @comments.each do |comment| %>
+				    <% if comment.issue_id.to_i == issue.id.to_i %>
+				    	<div class='row'>
+				    		<div class='col-md-offset-1'>
+						        <div class='comment-content-box'>
+			<!-- 		                <p>comment.courseid: <%= comment.courseid %>  </p>
+					                <p>comment.issue_id: <%= comment.issue_id %></p>
+					                <p>issue.courseid: <%= issue.courseid %>  </p>
+					                <p>issue.issue_id: <%= issue.id %></p>  --> 	
+									<table border="0" style='width: 100%;'>
+										<tr>
+											<td style='vertical-align: text-top;border-radius: 100%; width:35px; text-align: center;'><canvas style='background-color: white;border-radius: 100%;' width="50" height="50" data-jdenticon-value="<%= comment.name %>"></canvas></td>
+											<td style='padding-left: 10px;'>
+												<p style='font-weight: bold;'><%= comment.name %></p>
+												<p><%= comment.content %></p>
+												<p>
+													<% if comment.user == current_user %>
+														<%= link_to 'Edit', edit_comment_path(comment, :courseid => issue.courseid, :issue_id => issue.id) %> · 
+							                            <%= link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %> · 
+						                            <% end %>												
+													<%= link_to '回覆', new_comment_path(:courseid => issue.courseid, :issue_id => issue.id) %> · <%= time_ago_in_words(comment.created_at) %> ago
+												</p>
+											</td>
+										</tr>
+									</table>
+						        </div> 				    			
+				    		</div>
+				    	</div>
 
-		<% end %>	
+				    <% end %>
+				<% end %>
+
+			</div>	
 	<% end %>
 <% end %>

@@ -2,7 +2,8 @@
   <%= f.input :username, label:'姓名/暱稱', input_html: {value: current_user.username } %>
   <%= f.input :content, label:'內容', placeholder: '想說的話...' %>
   <div class="field" style='visibility: hidden;padding: 0px;margin: 0px;font-size: 0px;height: 0px;'>
-    <%= f.input :courseid, input_html: {value: params[:id] } %>
+  <!-- <div> -->
+    <%= f.input :courseid, input_html: {value: params[:id] || courseid } %>
     <%= f.input :useremail, input_html: {value: current_user.email } %>    
   </div>
   <%= f.button :submit, '留言' %>

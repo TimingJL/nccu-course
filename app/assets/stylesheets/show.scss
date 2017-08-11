@@ -1,8 +1,8 @@
 .show-page-box{
     background: white;
-    border-radius:12px;
-    margin: 3px 0px 20px 10px;
-    box-shadow:4px 4px 12px -2px rgba(20%,20%,40%,0.5);
+    border-radius:3px;
+    margin: 0px 0px 20px 10px;
+    //box-shadow:4px 4px 12px -2px rgba(20%,20%,40%,0.5);
 
     .header{
     	padding: 0px;
@@ -10,10 +10,10 @@
 	    //background-image: url(image_path("7-6-ok-02.jpg"));
 	    //background-repeat: repeat;
 	    //border-style:none;
-	    background-color: #ad806b;
+	    background-color: #19CC76;
 
-    	height:25px;
-    	border-radius:12px 12px 0px 0px;
+    	height:5px;
+    	border-radius:3px 3px 0px 0px;
     }
 
     .content{
@@ -24,6 +24,6 @@
     }
 
     h4{
-    	color: #AE0000;
+    	//color: #AE0000;
     }
 }

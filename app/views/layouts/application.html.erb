@@ -10,6 +10,10 @@
     <!-- google font for chinese -->
     <style>
       @import url(//fonts.googleapis.com/earlyaccess/cwtexhei.css);
+      @import url(//fonts.googleapis.com/earlyaccess/cwtexyen.css);
+      @import url(//fonts.googleapis.com/earlyaccess/cwtexfangsong.css);
+      @import url(//fonts.googleapis.com/earlyaccess/cwtexming.css);
+      @import url(//fonts.googleapis.com/earlyaccess/cwtexhei.css);
     </style>
 
     <!-- awesome font -->
@@ -22,7 +26,9 @@
 
     <!-- navbar google font styling -->
     <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Damion" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Damion" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Black" rel="stylesheet">
 
     <!-- footer -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -45,7 +51,7 @@
         <h4>provider: <%= current_user.provider %></h4>
       <% end %> -->
       <%= yield %>
-      <div id="id_footer"><%= render 'common/footer2' %></div>
+      <div id="id_footer"><%= render 'common/footer' %></div>
     </div>
   </body>
 </html>

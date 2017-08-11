@@ -11,15 +11,15 @@
                     <br>
                     <form>
                         <div class="form-group">
-                            <label>課程名稱:</label>
+                            <label class='search-label'>課程名稱:</label>
                             <input type="text" class="form-control" placeholder="課程名稱關鍵字">
                         </div>
                         <div class="form-group">
-                            <label>開課系級:</label>
+                            <label class='search-label'>開課系級:</label>
                             <input type="text" class="form-control" placeholder="開課系級關鍵字">
                         </div>
                         <div class="form-group">
-                            <label>授課教師:</label>
+                            <label class='search-label'>授課教師:</label>
                             <input type="text" class="form-control" placeholder="授課教師關鍵字">
                         </div>
                         <input type="submit" style='width: 100%' class="btn btn-info btn-lg" value="查詢">
@@ -34,7 +34,10 @@
                 <div class='show-page-box'>
                     <div class='header'></div>
                     <div class='content'>
-                        <h4><%= link_to d["name"], course_path(d["courseid"])%></h4>
+                        <div class='title-box'>
+                            <h4 class='course-title'><%= link_to d["name"], course_path(d["courseid"])%></h4>
+                        </div>
+                        
                         <div class='row'>
                             <div class='col-md-6'><h5>授課教師: <%= d["instructor"] %></h5></div>
                             <div class='col-md-6'><h5>通識類別: <%= d["generalclass"] %></h5></div>

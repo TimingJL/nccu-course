@@ -23,7 +23,22 @@
 		padding-left: 30px;
     }
 
-    h4{
-    	//color: #AE0000;
+    .course-title{
+        font-size: 30px;
+        font-family: 'cwTeXYen','Noto Sans', sans-serif;
+        font-weight:bold;
+        text-align:center;
+    }
+
+    .title-box{
+        width:100%;
+        background-color:#19CC76;
+        color: white;
+        padding: 5px;
+        margin-top: 15px;
+        a:visited {color:white;}
+        a:link {color:white;}
+        a:active {color:white;text-decoration:none;}
+        a:hover {color:white; background-color:#19CC76; text-decoration:none;}
     }
 }

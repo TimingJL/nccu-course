@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_comment, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   before_action :get_courses_data, only: [:destroy, :create]
   
 
@@ -68,6 +68,16 @@ class CommentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def upvote
+    @comment.upvote_by current_user
+    redirect_to :back
+  end
+
+  def downvote
+    @comment.downvote_by current_user
+    redirect_to :back   
+  end  
 
 	private
 

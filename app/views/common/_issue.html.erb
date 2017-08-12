@@ -10,12 +10,21 @@
 						<td>
 							<div style='font-weight: bold;font-size: 16px;'><%= issue.username %></div>
 								<div style='font-size: 16px;margin-top:5px;margin-bottom:5px;'><%= issue.content %></div>
+								<%= link_to "讚", like_issue_path(issue), method: :get %> · 
+                                <%= link_to "收回讚", dislike_issue_path(issue), method: :get %> · 
 								<% if issue.user == current_user %>
 									<%= link_to 'Edit', edit_issue_path(issue, :courseid => issue.courseid, :issue_id => issue.id) %> · 
 									<%= link_to 'Delete', issue, method: :delete, data: { confirm: 'Are you sure?' } %> · 
 								<% end %>								
 								<%= link_to '回覆', new_comment_path(:courseid => issue.courseid, :issue_id => issue.id) %> · <%= time_ago_in_words(issue.created_at) %> ago
 						</td>
+                        <td valign="top" align='right' width="50">
+                              <%= issue.get_likes.size %>
+                              <i class="fa fa-heart" aria-hidden="true" style='color:#FE7C62;'></i>
+<!--                                                             <p>
+                              <%= pluralize(issue.get_dislikes.size, "Dislike") %>
+                            </p> -->
+                        </td>
 					</tr>
 				</table>
 
@@ -36,6 +45,8 @@
 												<p style='font-weight: bold;'><%= comment.name %></p>
 												<p><%= comment.content %></p>
 												<p>
+													<%= link_to "讚", like_comment_path(comment), method: :get %> · 
+                                                    <%= link_to "收回讚", dislike_comment_path(comment), method: :get %> · 
 													<% if comment.user == current_user %>
 														<%= link_to 'Edit', edit_comment_path(comment, :courseid => issue.courseid, :issue_id => issue.id) %> · 
 							                            <%= link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %> · 
@@ -43,6 +54,13 @@
 													<%= link_to '回覆', new_comment_path(:courseid => issue.courseid, :issue_id => issue.id) %> · <%= time_ago_in_words(comment.created_at) %> ago
 												</p>
 											</td>
+                                            <td valign="top" align='right' width="50">
+                                                <%= comment.get_likes.size %>
+                                                <i class="fa fa-heart" aria-hidden="true" style='color:#FE7C62;'></i>
+<!--                                                             <p>
+                                                  <%= pluralize(comment.get_dislikes.size, "Dislike") %>
+                                                </p> -->
+                                            </td>
 										</tr>
 									</table>
 						        </div> 				    			

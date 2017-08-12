@@ -1,8 +1,20 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :admins
-  resources :issues
-  resources :comments
+  resources :issues do
+    member do
+      get "like", to: "issues#upvote"
+      get "dislike", to: "issues#downvote"
+    end
+  end
+
+  resources :comments do
+    member do
+      get "like", to: "comments#upvote"
+      get "dislike", to: "comments#downvote"
+    end
+  end
+
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }, path: 'users'
   devise_for :admins, path: 'admins', as: :authenticated_root
   # get 'welcome/index'

@@ -1,5 +1,5 @@
 class IssuesController < ApplicationController
-  before_action :set_issue, only: [:new, :show, :edit, :update, :destroy]
+  before_action :set_issue, only: [:new, :show, :edit, :update, :destroy, :upvote, :downvote]
   before_action :get_courses_data
 
   # GET /issues
@@ -70,6 +70,17 @@ class IssuesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def upvote
+    @issue.upvote_by current_user
+    redirect_to :back
+  end
+
+  def downvote
+    @issue.downvote_by current_user
+    redirect_to :back   
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

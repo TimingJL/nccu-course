@@ -4,18 +4,16 @@
 			<div class='show-page-box'>
 				<div class='header'></div>
 				<div class='content'>
-					<h3>課程名稱:</h3>
-					<h4><%= @course["name"] %></h4>
-
-					<h3>任課教師:</h3>
-					<h4><%= @course["instructor"] %></h4>
-
-					<h3>授課語言:</h3>
-					<h4><%= simple_format @course["language"] %></h4>
-
-					<h3>備註:</h3>
-					<h4><%= @course["note"] %></h4>
-				
+					<div class='title-box'>
+						<h4 class='course-title' style='font-size: 18px'><%= @course["name"] %></h4>
+					</div>
+					<div class="list-group" style='margin-top: 10px;'>
+					  <a class="list-group-item" href=""><i class="fa fa-id-card-o" aria-hidden="true"></i>&nbsp; <%= @course["instructor"] %></a>
+					  <a class="list-group-item" href=""><i class="fa fa-book fa-fw" aria-hidden="true"></i>&nbsp; <%= simple_format @course["choose"] %></a>
+					  <a class="list-group-item" href=""><i class="fa fa-graduation-cap fa-fw" aria-hidden="true"></i>&nbsp; <%= @course["point"] %></a>
+					  <a class="list-group-item" href=""><i class="fa fa-check-square-o fa-fw" aria-hidden="true"></i>&nbsp; <%= @course["note"] %></a>
+					</div>
+					<input class='btn btn-default'  type ="button" onclick="history.back()" value="回到上一頁"></input>
 					<!-- <p><%= link_to 'Back', courses_path %></p> -->					
 				</div>
 			</div>			

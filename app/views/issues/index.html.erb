@@ -86,7 +86,7 @@
                                                         <td style='vertical-align: text-top; width:60px'><canvas style='background-color: white;border-radius: 100%;' width="50" height="50" data-jdenticon-value="<%= issue.username %>"></canvas></td>
                                                         <td>
                                                             <div style='font-weight: bold;font-size: 16px;'><%= issue.username %></div>
-                                                            <div style='font-size: 16px;margin-top:5px;margin-bottom:5px;'><%= issue.content %></div>
+                                                            <div style='font-size: 16px;margin-top:5px;margin-bottom:5px;'><%= simple_format issue.content %></div>
                                                             <%= link_to "讚", like_issue_path(issue), method: :get %> · 
                                                             <%= link_to "收回讚", dislike_issue_path(issue), method: :get %> · 
                                                             <% if issue.user == current_user %>
@@ -121,7 +121,7 @@
                                                                             <td style='vertical-align: text-top;border-radius: 100%; width:35px; text-align: center;'><canvas style='background-color: white;border-radius: 100%;' width="50" height="50" data-jdenticon-value="<%= comment.name %>"></canvas></td>
                                                                             <td style='padding-left: 10px;'>
                                                                                 <p style='font-weight: bold;'><%= comment.name %></p>
-                                                                                <p><%= comment.content %></p>
+                                                                                <p><%= simple_format comment.content %></p>
                                                                                 <p>
                                                                                     <%= link_to "讚", like_comment_path(comment), method: :get %> · 
                                                                                     <%= link_to "收回讚", dislike_comment_path(comment), method: :get %> · 

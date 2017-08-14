@@ -36,22 +36,42 @@
                     <div class='content'>
                         <div class='title-box'>
                             <h4 class='course-title'><%= link_to d["name"], course_path(d["courseid"])%></h4>
-                        </div>
-                        
+                        </div>                 
                         <div class='row'>
-                            <div class='col-md-6'><h5>授課教師: <%= d["instructor"] %></h5></div>
-                            <div class='col-md-6'><h5>通識類別: <%= d["generalclass"] %></h5></div>
+                            <div class='col-xs-4 course-attribute-box' style='padding-right: 5px'>
+                                <div class='course-attribute-content' style='background-color:#0CA9D4;font-size: 120%'><%= d["instructor"] %></div>
+                                <div class='course-attribute-title' style='background-color:#044C62;'><i class="fa fa-id-card-o fa-lg"></i> 授課教師</div>
+
+                            </div>
+                            <div class='col-xs-4 course-attribute-box' style='padding-right: 5px;padding-left: 5px'>
+                                <div class='course-attribute-content' style='background-color:#FF8C9D;'><%= d["generalclass"] %></div>
+                                <div class='course-attribute-title' style='background-color:#DD354E;'><i class="fa fa-tags fa-lg"></i> 通識類別</div>
+                            </div>
+                            <div class='col-xs-4 course-attribute-box'  style='padding-left: 5px'>
+                                <div class='course-attribute-content' style='font-size: 40px;background-color:#ffca28;'><%= d["point"] %></div>
+                                <div class='course-attribute-title' style='background-color:#e67e22;'><i class="fa fa-graduation-cap fa-lg"></i> 學分</div>
+                            </div>
                         </div>
                         <div class='row'>
-                            <div class='col-md-6'><h5>教室: <%= d["place"] %></h5></div>
-                            <div class='col-md-6'><h5>學分: <%= d["point"] %></h5></div>
+                            <div class='col-xs-4 course-attribute-box' style='padding-right: 5px'>
+                                <div class='course-attribute-content' style='background-color:#CE93D8;'><%= d["place"] %></div>
+                                <div class='course-attribute-title' style='background-color:#AB47BC;'><i class="fa fa-university fa-lg"></i> 教室</div>
+                            </div>
+                            <div class='col-xs-4 course-attribute-box' style='padding-right: 5px;padding-left: 5px'>
+                                <div class='course-attribute-content' style='background-color:#4DB6AC;'><%= simple_format d["language"] %></div>
+                                <div class='course-attribute-title' style='background-color:#009688;'><i class="fa fa-language fa-lg"></i> 授課語言</div>
+                            </div>
+                            <div class='col-xs-4 course-attribute-box'  style='padding-left: 5px'>
+                                <div class='course-attribute-content' style='font-size: 40px;background-color:#9E9E9E;'><%= simple_format d["choose"] %></div>
+                                <div class='course-attribute-title' style='background-color:#546E7A;'><i class="fa fa-book fa-lg"></i> 修別</div>
+                            </div>
                         </div>
+
                         <div class='row'>
-                            <div class='col-md-6'><h5>授課語言: <%= simple_format d["language"] %></h5></div>
-                            <div class='col-md-6'><h5>修別: <%= simple_format d["choose"] %></h5></div>
-                        </div>
-                        <div class='row'>
-                            <div class='col-md-12'><h5>備註: <%= d["note"] %></h5></div>
+                            <div class='col-xs-12 course-attribute-box'>
+                                <div class='course-attribute-content' style='font-size: 16px;background-color:#BCAAA4;height:inherit;text-align: left;'><%= d["note"] %></div>
+                                <div class='course-attribute-title' style='background-color:#795548;'><i class="fa fa-check-square-o fa-lg"></i> 備註</div>
+                            </div>
                         </div>
 
                                 <!-- JDENTICON(Open source library for generating identicons) -->
@@ -78,7 +98,7 @@
                                                         </td>
                                                         <td valign="top" align='right' width="50">
                                                               <%= issue.get_likes.size %>
-                                                              <i class="fa fa-heart" aria-hidden="true" style='color:#FE7C62;'></i>
+                                                              <i class="fa fa-heart fa-lg" aria-hidden="true" style='color:#FE7C62;'></i>
 <!--                                                             <p>
                                                               <%= pluralize(issue.get_dislikes.size, "Dislike") %>
                                                             </p> -->
@@ -114,7 +134,7 @@
                                                                             </td>
                                                                             <td valign="top" align='right' width="50">
                                                                                 <%= comment.get_likes.size %>
-                                                                                <i class="fa fa-heart" aria-hidden="true" style='color:#FE7C62;'></i>
+                                                                                <i class="fa fa-heart fa-lg" aria-hidden="true" style='color:#FE7C62;'></i>
                     <!--                                                             <p>
                                                                                   <%= pluralize(comment.get_dislikes.size, "Dislike") %>
                                                                                 </p> -->

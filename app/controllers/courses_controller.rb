@@ -59,6 +59,7 @@ class CoursesController < ApplicationController
 					(d["choose"].include?params[:search]) || 
 					(d["coregeneral"].include?params[:search]) || 
 					(d["change"].include?params[:search]) || 
+					(d["department"].include?params[:search]) ||
 					(d["note"].include?params[:search])
 					@data.push(d)
 				end

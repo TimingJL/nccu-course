@@ -107,7 +107,8 @@ end
       # Search
       if params[:search]
       @tempdata.each do |d|
-        if (d["semester"].include?params[:search]) || 
+        if (d["department"].include?params[:search]) ||
+          (d["semester"].include?params[:search]) || 
           (d["courseid"].include?params[:search]) ||
           (d["name"].include?params[:search]) || 
           (d["instructor"].include?params[:search]) || 
@@ -121,8 +122,7 @@ end
           (d["choose"].include?params[:search]) || 
           (d["coregeneral"].include?params[:search]) || 
           (d["change"].include?params[:search]) || 
-          (d["note"].include?params[:search]) ||
-          (d["department"].include?params[:search])
+          (d["note"].include?params[:search])
           @data.push(d)
         end
       end

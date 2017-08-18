@@ -108,6 +108,7 @@ end
       if params[:search]
       @tempdata.each do |d|
         if (d["semester"].include?params[:search]) || 
+          (d["department"].include?params[:search]) ||
           (d["courseid"].include?params[:search]) ||
           (d["name"].include?params[:search]) || 
           (d["instructor"].include?params[:search]) || 

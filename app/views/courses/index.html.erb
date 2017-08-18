@@ -29,6 +29,7 @@
 
         <div class='col-md-9'>
         	<div class="list-group">
+        		<%= @data.length %>
 	        	<% @data.each do |d| %>
 					<a class="list-group-item" href="<%= course_path(d["courseid"]) %>">
 						<div style='display: table-row;'>

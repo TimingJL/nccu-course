@@ -1,3 +1,55 @@
+<div class='row'>
+    <div class='container' style='margin-top: 30px;'>
+        <!-- left -->
+        <div class='col-md-4'>
+            <div class='show-page-box'> 
+            <!-- style='position: fixed' -->
+                <div class='header'></div>
+                <div class='content'>
+                    <br>
+                    <form>
+                        <div class="form-group">
+                            <label class='search-label'>課程名稱:</label>
+                            <input type="text" class="form-control" placeholder="課程名稱關鍵字">
+                        </div>
+                        <div class="form-group">
+                            <label class='search-label'>開課系級:</label>
+                            <input type="text" class="form-control" placeholder="開課系級關鍵字">
+                        </div>
+                        <div class="form-group">
+                            <label class='search-label'>授課教師:</label>
+                            <input type="text" class="form-control" placeholder="授課教師關鍵字">
+                        </div>
+                        <input type="submit" style='width: 100%' class="btn btn-info btn-lg" value="查詢">
+                    </form>     
+                </div>            
+            </div>
+        </div>
+
+
+        <div class='col-md-8'>
+        	<div class="list-group">
+	        	<% @data.each do |d| %>
+					<a class="list-group-item" href="<%= course_path(d["courseid"]) %>">
+						<div style='display: table-row;'>
+							<div style='display: table-cell;width:50px;'><%= d["semester"] %></div>
+							<div style='display: table-cell;width:100px;padding-right:10px;color:#5383d3;'><%= d["name"] %></div>
+							<div style='display: table-cell;width:60px;padding-right:10px;'><%= d["department"] %></div>
+							<div style='display: table-cell;width:60px;padding-right:10px;'><%= d["choose"] %></div>
+							<div style='display: table-cell;width:50px;padding-right:10px;'><%= d["generalclass"] %></div>
+							<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["instructor"] %></div>
+							<div style='display: table-cell;padding-right:10px;'><%= d["place"] %></div>
+							<div style='display: table-cell;'></div>
+						</div>
+					</a>
+	        	<% end %>
+        	</div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 
 <div class='container'>
 	<table class="table table-hover">
 	    <thead>
@@ -50,4 +102,4 @@ $(document).ready(function(){
         return false;
     });
 });
-</script>
+</script> -->

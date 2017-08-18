@@ -23,7 +23,8 @@ class CoursesController < ApplicationController
 
 	def get_courses_data
 	  	require 'rest-client'
-	  	url = 'https://raw.githubusercontent.com/TimingJL/nccu-course/master/data/testData.json'
+	  	# url = 'https://raw.githubusercontent.com/TimingJL/nccu-course/master/data/testData.json'
+	  	url = 'https://raw.githubusercontent.com/TimingJL/nccu-course/master/data/10601coursedata.json'
 	  	raw_content = RestClient.get(url)
 	  	@tempdata = JSON.parse( raw_content )
 	  	@data = []

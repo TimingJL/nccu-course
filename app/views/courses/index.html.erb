@@ -10,15 +10,18 @@
                     <form>
                         <div class="form-group">
                             <label class='search-label'>課程名稱:</label>
-                            <input type="text" class="form-control" placeholder="課程名稱關鍵字">
+                            <!-- <input type="text" class="form-control" placeholder="課程名稱關鍵字"> -->
+                            <div><%= text_field_tag :name, params[:name], placeholder: "搜尋課程......", class: "form-control" %></div>
                         </div>
                         <div class="form-group">
-                            <label class='search-label'>開課系級:</label>
-                            <input type="text" class="form-control" placeholder="開課系級關鍵字">
+                            <label class='search-label'>開課系所:</label>
+                            <!-- <input type="text" class="form-control" placeholder="開課系級關鍵字"> -->
+                            <div><%= text_field_tag :department, params[:department], placeholder: "搜尋系所......", class: "form-control" %></div>
                         </div>
                         <div class="form-group">
                             <label class='search-label'>授課教師:</label>
-                            <input type="text" class="form-control" placeholder="授課教師關鍵字">
+                            <!-- <input type="text" class="form-control" placeholder="授課教師關鍵字"> -->
+                            <div><%= text_field_tag :instructor, params[:instructor], placeholder: "搜尋教師......", class: "form-control" %></div>
                         </div>
                         <input type="submit" style='width: 100%' class="btn btn-info btn-lg" value="查詢">
                     </form>     
@@ -29,7 +32,6 @@
 
         <div class='col-md-9'>
         	<div class="list-group">
-        		<%= @data.length %>
 	        	<% @data.each do |d| %>
 					<a class="list-group-item" href="<%= course_path(d["courseid"]) %>">
 						<div style='display: table-row;'>

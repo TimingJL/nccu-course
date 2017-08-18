@@ -29,6 +29,8 @@ class CoursesController < ApplicationController
 	  	@tempdata = JSON.parse( raw_content )
 	  	@data = []
 
+	  	@searchName =[]
+	  	@searchInstructor =[]
 	  	# if current_user.uid.present?
 	   #      @fburl = "https://graph.facebook.com/" + 
 	   #            current_user.uid.to_s + 
@@ -41,6 +43,17 @@ class CoursesController < ApplicationController
 	   #  	@raw_content = " no raw_content"
 	   #  	@fbData = "no fbData"
 	   #  end
+
+
+	 #  	if params[:name]
+		# 	@tempdata.each do |d|
+		# 		if (d["name"].include?params[:name])
+		# 			@data.push(d)
+		# 		end
+		# 	end
+		# elsif params[:search].blank?
+		# 	@data = JSON.parse( raw_content )
+	 #  	end
 
 	  	# Search
 	  	if params[:search]
@@ -64,9 +77,65 @@ class CoursesController < ApplicationController
 					@data.push(d)
 				end
 			end
-		elsif params[:search].blank?
-			@data = JSON.parse( raw_content )
+	  	elsif params[:name] || params[:department] || params[:instructor]
+	  		if params[:name]
+	  			@tempdata.each do |d|
+	  				if (d["name"].include?params[:name])
+	  					@searchName.push(d)
+	  				end
+	  			end
+	  		else
+	  			@searchName = JSON.parse( raw_content )
+	  		end
+
+	  		if params[:instructor]
+	  			@searchName.each do |d|
+	  				if (d["instructor"].include?params[:instructor])
+	  					@searchInstructor.push(d)
+	  				end
+	  			end
+	  		else
+	  			@searchInstructor = JSON.parse( raw_content )
+	  		end
+
+	  		if params[:department]
+	  			@searchInstructor.each do |d|
+	  				if (d["department"].include?params[:department])
+	  					@data.push(d)
+	  				end
+	  			end
+	  		else
+	  			@data = JSON.parse( raw_content )
+	  		end	  		  		
+	  	elsif
+	  		@data = JSON.parse( raw_content )
 	  	end
+
+	  	# Search
+	 #  	if params[:search]
+		# 	@tempdata.each do |d|
+		# 		if (d["semester"].include?params[:search]) || 
+		# 			(d["courseid"].include?params[:search])	||
+		# 			(d["name"].include?params[:search]) || 
+		# 			(d["instructor"].include?params[:search]) || 
+		# 			(d["point"].include?params[:search]) || 
+		# 			(d["session"].include?params[:search]) || 
+		# 			(d["place"].include?params[:search]) || 
+		# 			(d["language"].include?params[:search]) || 
+		# 			(d["asgeneral"].include?params[:search]) || 
+		# 			(d["generalclass"].include?params[:search]) || 
+		# 			(d["length"].include?params[:search]) || 
+		# 			(d["choose"].include?params[:search]) || 
+		# 			(d["coregeneral"].include?params[:search]) || 
+		# 			(d["change"].include?params[:search]) || 
+		# 			(d["department"].include?params[:search]) ||
+		# 			(d["note"].include?params[:search])
+		# 			@data.push(d)
+		# 		end
+		# 	end
+		# elsif params[:search].blank?
+		# 	@data = JSON.parse( raw_content )
+	 #  	end
 	end
 
 	def find_course

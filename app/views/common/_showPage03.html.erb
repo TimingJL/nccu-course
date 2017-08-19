@@ -7,13 +7,53 @@
 					<div class='title-box'>
 						<h4 class='course-title' style='font-size: 18px'><%= @course["name"] %></h4>
 					</div>
-					<div class="list-group" style='margin-top: 10px;'>
-					  <a class="list-group-item" href=""><i class="fa fa-id-card-o" aria-hidden="true"></i>&nbsp; <%= @course["instructor"] %></a>
-					  <a class="list-group-item" href=""><i class="fa fa-book fa-fw" aria-hidden="true"></i>&nbsp; <%= simple_format @course["choose"] %></a>
-					  <a class="list-group-item" href=""><i class="fa fa-graduation-cap fa-fw" aria-hidden="true"></i>&nbsp; <%= @course["point"] %></a>
-					  <a class="list-group-item" href=""><i class="fa fa-check-square-o fa-fw" aria-hidden="true"></i>&nbsp; <%= @course["note"] %></a>
-					</div>
+
+		        	<div class="list-group" style='margin-top: 10px;'>
+							<div class="list-group-item">
+								<div style='display: table-row;'>
+									<div style='display: table-cell; width:150px'><i class="fa fa-check-square-o fa-fw" aria-hidden="true"></i><%= @course["semester"] %></div>
+									<div style='display: table-cell;'><i class="fa fa-check-square-o fa-fw" aria-hidden="true"></i>學分: <%= @course["point"] %></div>
+								</div>
+							</div>
+							<div class="list-group-item">
+								<div style='display: table-row;'>
+									<div style='display: table-cell; width:150px'><i class="fa fa-check-square-o fa-fw" aria-hidden="true"></i><%= @course["department"] %></div>
+									<div style='display: table-cell;'><i class="fa fa-check-square-o fa-fw" aria-hidden="true"></i><%= @course["generalclass"] %></div>
+								</div>
+							</div>
+							<div class="list-group-item">
+								<div style='display: table-row;'>
+									<div style='display: table-cell; width:150px'><i class="fa fa-check-square-o fa-fw" aria-hidden="true"></i><%= @course["session"] %></div>
+									<div style='display: table-cell;'><i class="fa fa-check-square-o fa-fw" aria-hidden="true"></i><%= @course["place"] %></div>
+								</div>
+							</div>
+							<div class="list-group-item">
+								<div style='display: table-row;'>
+									<div style='display: table-cell; width:150px'><i class="fa fa-check-square-o fa-fw" aria-hidden="true"></i>授課語言: <%= @course["language"] %></div>
+									<div style='display: table-cell;'><i class="fa fa-check-square-o fa-fw" aria-hidden="true"></i>修別: <%= @course["choose"] %></div>
+								</div>
+							</div>
+							<div class="list-group-item">
+								<div style='display: table-row;'>
+									<div style='display: table-cell; width:150px'><i class="fa fa-check-square-o fa-fw" aria-hidden="true"></i>得充抵通識: <%= @course["asgeneral"] %></div>
+									<div style='display: table-cell;'><i class="fa fa-check-square-o fa-fw" aria-hidden="true"></i>核心通識: <%= @course["coregeneral"] %></div>
+								</div>
+							</div>
+							<div class="list-group-item">
+								<div style='display: table-row;'>
+									<div style='display: table-cell; width:150px'><i class="fa fa-check-square-o fa-fw" aria-hidden="true"></i><%= @course["instructor"] %></div>
+								</div>
+							</div>
+							<div class="list-group-item">
+								<div style='display: table-row;'>
+									<div style='display: table-cell; width:150px'><i class="fa fa-check-square-o fa-fw" aria-hidden="true"></i><%= @course["note"] %></div>
+								</div>
+							</div>
+		        	</div>
 					<input class='btn btn-default'  type ="button" onclick="history.back()" value="回到上一頁"></input>
+					<% if @course["agenda"] != false %>
+						<%= link_to '教學大綱',@course["agenda"], class: 'btn btn-warning', style: 'color:white' %>
+					<% end %>
 					<!-- <p><%= link_to 'Back', courses_path %></p> -->					
 				</div>
 			</div>			

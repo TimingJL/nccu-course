@@ -4,7 +4,9 @@ class CoursesController < ApplicationController
 	before_action :find_course, only: [:show]
 	before_action :set_issue, only: [:show, :edit, :update, :destroy]
 
-	def index	
+	def index
+		@issues = Issue.all
+		@comments = Comment.all
 	end
 
 	def show

@@ -32,6 +32,19 @@
 
         <div class='col-md-9'>
         	<div class="list-group">
+					<div class="list-group-item" style='background-color:#2ecc71;color:white;font-weight: bold;'>
+						<div style='display: table-row;'>
+							<div style='display: table-cell;width:50px;'>學期</div>
+							<div style='display: table-cell;width:100px;padding-right:10px;'>課程名稱</div>
+							<div style='display: table-cell;width:60px;padding-right:10px;'>系所</div>
+							<div style='display: table-cell;width:60px;padding-right:10px;'>修別</div>
+							<div style='display: table-cell;width:50px;padding-right:10px;'>通識類別</div>
+							<div style='display: table-cell;width:100px;padding-right:10px;'>教師</div>
+							<div style='display: table-cell;width:100px;padding-right:10px;'>時間</div>
+							<div style='display: table-cell;width:100px;padding-right:10px;'>地點</div>
+							<div style='display: table-cell;width:inherit;padding-right:10px;'>最新留言</div>
+						</div>
+					</div>
 	        	<% @data.each do |d| %>
 					<a class="list-group-item" href="<%= course_path(d["courseid"]) %>">
 						<div style='display: table-row;'>

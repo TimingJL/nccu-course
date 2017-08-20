@@ -32,7 +32,7 @@
 
         <div class='col-md-9'>
         	<div class="list-group">
-					<div class="list-group-item" style='background-color:#2ecc71;color:white;font-weight: bold;'>
+					<div class="list-group-item" style='background-color:#41cccc;color:white;font-weight: bold;'>
 						<div style='display: table-row;'>
 							<div style='display: table-cell;width:50px;'>學期</div>
 							<div style='display: table-cell;width:100px;padding-right:10px;'>課程名稱</div>
@@ -64,6 +64,7 @@
 										<% myIssues.push(issue.content) %>
 									<% end %>
 								<% end %>
+								
 								<% @comments.each do |comment| %>
 									<% if comment.courseid == d["courseid"].to_i %>
 										<% myComments.push(comment.content) %>

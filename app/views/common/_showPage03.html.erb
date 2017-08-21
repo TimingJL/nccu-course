@@ -11,6 +11,11 @@
 		        	<div class="list-group" style='margin-top: 10px;'>
 							<div class="list-group-item">
 								<div style='display: table-row;'>
+									<div style='display: table-cell; width:150px'>課程代碼: <%= @course["courseid"] %></div>
+								</div>
+							</div>		        	
+							<div class="list-group-item">
+								<div style='display: table-row;'>
 									<div style='display: table-cell; width:150px'><i class="fa fa-calendar fa-fw" aria-hidden="true"></i><%= @course["semester"] %></div>
 									<div style='display: table-cell;'><i class="fa fa-graduation-cap fa-fw" aria-hidden="true"></i>學分: <%= @course["point"] %></div>
 								</div>

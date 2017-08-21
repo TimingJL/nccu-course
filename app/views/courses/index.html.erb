@@ -35,6 +35,7 @@
 				<div class="list-group-item" style='background-color:#41cccc;color:white;font-weight: bold;'>
 					<div style='display: table-row;'>
 						<div style='display: table-cell;width:50px;'>學期</div>
+						<div style='display: table-cell;width:100px;padding-right:10px;'>課程代碼</div>
 						<div style='display: table-cell;width:100px;padding-right:10px;'>課程名稱</div>
 						<div style='display: table-cell;width:60px;padding-right:10px;'>系所</div>
 						<div style='display: table-cell;width:60px;padding-right:10px;'>修別</div>
@@ -67,6 +68,7 @@
 							<a class="list-group-item" href="<%= course_path(d["courseid"]) %>">
 								<div style='display: table-row;'>
 									<div style='display: table-cell;width:50px;'><%= d["semester"] %></div>
+									<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["courseid"] %></div>
 									<div style='display: table-cell;width:100px;padding-right:10px;color:#5383d3;'><%= d["name"] %></div>
 									<div style='display: table-cell;width:60px;padding-right:10px;'><%= d["department"] %></div>
 									<div style='display: table-cell;width:60px;padding-right:10px;'><%= d["choose"] %></div>
@@ -105,6 +107,7 @@
 					<a class="list-group-item" href="<%= course_path(d["courseid"]) %>">
 						<div style='display: table-row;'>
 							<div style='display: table-cell;width:50px;'><%= d["semester"] %></div>
+							<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["courseid"] %></div>
 							<div style='display: table-cell;width:100px;padding-right:10px;color:#5383d3;'><%= d["name"] %></div>
 							<div style='display: table-cell;width:60px;padding-right:10px;'><%= d["department"] %></div>
 							<div style='display: table-cell;width:60px;padding-right:10px;'><%= d["choose"] %></div>

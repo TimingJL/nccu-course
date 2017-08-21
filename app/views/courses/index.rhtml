@@ -1,0 +1,209 @@
+<div class='row'>
+    <div class='container' style='margin-top: 30px;'>
+        <!-- left -->
+        <div class='col-md-12'>
+            <div class='show-page-box'> 
+            <!-- style='position: fixed' -->
+                <div class='header'></div>
+                <div class='content'>
+                    <br>
+                    <form>
+                    	<div class='row'>
+                    		<div class='col-xs-4'>
+		                        <div class="form-group">
+		                            <label class='search-label'>課程名稱:</label>
+		                            <!-- <input type="text" class="form-control" placeholder="課程名稱關鍵字"> -->
+		                            <div><%= text_field_tag :name, params[:name], placeholder: "搜尋課程......", class: "form-control" %></div>
+		                        </div>
+                    		</div>
+                    		<div class='col-xs-4'>
+		                        <div class="form-group">
+		                            <label class='search-label'>開課系所:</label>
+		                            <!-- <input type="text" class="form-control" placeholder="開課系級關鍵字"> -->
+		                            <div><%= text_field_tag :department, params[:department], placeholder: "搜尋系所......", class: "form-control" %></div>
+		                        </div>
+                    		</div>
+                    		<div class='col-xs-4'>
+		                        <div class="form-group">
+		                            <label class='search-label'>授課教師:</label>
+		                            <!-- <input type="text" class="form-control" placeholder="授課教師關鍵字"> -->
+		                            <div><%= text_field_tag :instructor, params[:instructor], placeholder: "搜尋教師......", class: "form-control" %></div>
+		                        </div>
+                    		</div>
+                    	</div>
+
+                        <input type="submit" style='width: 100%' class="btn btn-info btn-lg" value="查詢">
+                    </form>     
+                </div>            
+            </div>
+        </div>
+
+
+        <div class='col-md-12'>
+        	<div class="list-group">
+				<div class="list-group-item" style='background-color:#41cccc;color:white;font-weight: bold;'>
+					<div style='display: table-row;'>
+						<div style='display: table-cell;width:50px;'>學期</div>
+						<div style='display: table-cell;width:100px;padding-right:10px;'>課程代碼</div>
+						<div style='display: table-cell;width:100px;padding-right:10px;'>課程名稱</div>
+						<div style='display: table-cell;width:60px;padding-right:10px;'>系所</div>
+						<div style='display: table-cell;width:60px;padding-right:10px;'>修別</div>
+						<div style='display: table-cell;width:50px;padding-right:10px;'>通識類別</div>
+						<div style='display: table-cell;width:100px;padding-right:10px;'>教師</div>
+						<div style='display: table-cell;width:100px;padding-right:10px;'>時間</div>
+						<div style='display: table-cell;width:100px;padding-right:10px;'>地點</div>
+						<div style='display: table-cell;width:inherit;padding-right:10px;'>最新留言</div>
+					</div>
+				</div>
+				<% issues = Issue.all %>
+				<% comments = Comment.all %>
+				<% courses = [] %>
+				<% courseid = [] %>
+				<% issues.each do |issue| %>
+					<% courses.push([issue.courseid, issue.updated_at]) %>
+				<% end %>
+				<% comments.each do |comment| %>
+					<% courses.push([comment.courseid, comment.updated_at]) %>
+				<% end %>
+				<% courses.sort_by{|courseid, updated_at| updated_at} %>
+				<% courses.each do |course| %>
+					<% courseid.push(course[0]) %>
+				<% end %>
+				<% courseid.uniq! %>
+
+				<% courseid.reverse.each do |cid| %>
+					<% @data.each do |d| %>
+						<% if d["courseid"].to_i == cid.to_i %>
+							<a class="list-group-item" href="<%= course_path(d["courseid"]) %>">
+								<div style='display: table-row;'>
+									<div style='display: table-cell;width:50px;'><%= d["semester"] %></div>
+									<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["courseid"] %></div>
+									<div style='display: table-cell;width:100px;padding-right:10px;color:#5383d3;'><%= d["name"] %></div>
+									<div style='display: table-cell;width:60px;padding-right:10px;'><%= d["department"] %></div>
+									<div style='display: table-cell;width:60px;padding-right:10px;'><%= d["choose"] %></div>
+									<div style='display: table-cell;width:50px;padding-right:10px;'><%= d["generalclass"] %></div>
+									<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["instructor"] %></div>
+									<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["session"] %></div>
+									<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["place"] %></div>
+									<div style='display: table-cell;width:inherit;padding-right:10px;'>
+										<% myIssues = [] %>
+										<% myComments = [] %>
+										<% @issues.each do |issue| %>
+											<% if issue.courseid == d["courseid"].to_i %>
+												<% myIssues.push(issue.content) %>
+											<% end %>
+										<% end %>
+
+										<% @comments.each do |comment| %>
+											<% if comment.courseid == d["courseid"].to_i %>
+												<% myComments.push(comment.content) %>
+											<% end %>
+										<% end %>
+										<strong><%= myIssues.last %></strong>
+
+										<% if myComments.length > 0 %>
+											<strong>/<%= myComments.last %></strong>
+										<% end %>
+									</div>
+								</div>
+							</a>
+							<% @data.delete_at(@data.index(d)) %>
+						<% end %>
+					<% end %>
+				<% end %>
+
+	        	<% @data.each do |d| %>
+					<a class="list-group-item" href="<%= course_path(d["courseid"]) %>">
+						<div style='display: table-row;'>
+							<div style='display: table-cell;width:50px;'><%= d["semester"] %></div>
+							<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["courseid"] %></div>
+							<div style='display: table-cell;width:100px;padding-right:10px;color:#5383d3;'><%= d["name"] %></div>
+							<div style='display: table-cell;width:60px;padding-right:10px;'><%= d["department"] %></div>
+							<div style='display: table-cell;width:60px;padding-right:10px;'><%= d["choose"] %></div>
+							<div style='display: table-cell;width:50px;padding-right:10px;'><%= d["generalclass"] %></div>
+							<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["instructor"] %></div>
+							<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["session"] %></div>
+							<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["place"] %></div>
+							<div style='display: table-cell;width:inherit;padding-right:10px;'>
+								<% myIssues = [] %>
+								<% myComments = [] %>
+								<% @issues.each do |issue| %>
+									<% if issue.courseid == d["courseid"].to_i %>
+										<% myIssues.push(issue.content) %>
+									<% end %>
+								<% end %>
+
+								<% @comments.each do |comment| %>
+									<% if comment.courseid == d["courseid"].to_i %>
+										<% myComments.push(comment.content) %>
+									<% end %>
+								<% end %>
+								<strong><%= myIssues.last %></strong>
+
+								<% if myComments.length > 0 %>
+									<strong>/<%= myComments.last %></strong>
+								<% end %>
+							</div>
+						</div>
+					</a>
+	        	<% end %>
+        	</div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 
+<div class='container'>
+	<table class="table table-hover">
+	    <thead>
+	      <tr>
+	      	<th style="width:70px;">學年期</th>
+	        <th>科目代號</th>
+	        <th>課程名稱</th>
+	        <th>任課教師</th>
+	        <th style="width:60px;">學分</th>
+	        <th>Session</th>
+	        <th style="width:60px;">教室</th>
+	        <th style="width:80px;">授課語言</th>
+	        <th style="width:120px;">得充抵通識</th>
+	        <th style="width:110px;">通識類別</th>
+	        <th style="width:60px;">期數</th>
+	        <th style="width:60px;">修別</th>
+	        <th style="width:110px;">核心通識</th>
+	        <th>異動資訊</th>
+	        <th>備註</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+			<% @data.each do |d| %>
+				<tr href="<%= course_path(d["courseid"]) %>" style='cursor:pointer;'>
+					<td><%= d["semester"] %></td>
+					<td><%= d["courseid"] %></td>
+					<td><%= d["name"] %></td>
+					<td><%= d["instructor"] %></td>
+					<td><%= d["point"] %></td>
+					<td><%= d["session"] %></td>
+					<td><%= d["place"] %></td>
+					<td><%= simple_format d["language"] %></td>
+					<td><%= d["asgeneral"] %></td>
+					<td><%= d["generalclass"] %></td>
+					<td><%= d["length"] %></td>
+					<td><%= simple_format d["choose"] %></td>
+					<td><%= simple_format d["coregeneral"] %></td>
+					<td><%= d["change"] %></td>	
+					<td><%= d["note"] %></td>
+				</tr>
+			<% end %>
+	    </tbody>
+	</table>
+</div>
+
+<script>
+$(document).ready(function(){
+    $('table tr').click(function(){
+        window.location = $(this).attr('href');
+        return false;
+    });
+});
+</script> -->

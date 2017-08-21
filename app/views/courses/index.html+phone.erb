@@ -1,0 +1,119 @@
+<div class='row'>
+	<div class="list-group" style='margin-top: 5px'>
+        <div class="input-group">
+          <div><%= text_field_tag :search, params[:search], placeholder: "搜尋課程、教師、各種關鍵字......", class: "form-control" ,style: "width:100%;min-width:100%;" %></div>
+          <span class="input-group-btn">
+            <button id='btn-search' class="btn btn-secondary" type="submit" style='color:white;'><i class="fa fa-search" aria-hidden="true"></i></button>
+          </span>
+        </div>
+	</div>
+
+	<div class="list-group">
+		<% issues = Issue.all %>
+		<% comments = Comment.all %>
+		<% courses = [] %>
+		<% courseid = [] %>
+		<% issues.each do |issue| %>
+			<% courses.push([issue.courseid, issue.updated_at]) %>
+		<% end %>
+		<% comments.each do |comment| %>
+			<% courses.push([comment.courseid, comment.updated_at]) %>
+		<% end %>
+		<% courses.sort_by{|courseid, updated_at| updated_at} %>
+		<% courses.each do |course| %>
+			<% courseid.push(course[0]) %>
+		<% end %>
+		<% courseid.uniq! %>
+
+		<% courseid.reverse.each do |cid| %>
+			<% @data.each do |d| %>
+				<% if d["courseid"].to_i == cid.to_i %>
+					<div class="list-group-item">
+						<div class='row'>
+							<div class='col-xs-6' style='padding-right: 3px;'>課程代碼: <%= d["courseid"] %></div>
+							<div class='col-xs-3'><%= d["generalclass"] %></div>
+							<div class='col-xs-3'><%= d["choose"] %></div>
+						</div>
+						<div class='row'>
+							<div class='col-xs-9'>
+								<%= link_to d["name"],course_path(d["courseid"]) %>
+								(<%= d["instructor"] %>)
+							</div>
+							<div class='col-xs-3'>
+									<% if d["agenda"] != false %>
+										<%= link_to '教學大綱',d["agenda"], class: 'btn btn-warning btn-xs', style: 'color:white' %>
+									<% end %>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class='col-xs-12'>
+							<% myIssues = [] %>
+							<% myComments = [] %>
+							<% @issues.each do |issue| %>
+								<% if issue.courseid == d["courseid"].to_i %>
+									<% myIssues.push(issue.content) %>
+								<% end %>
+							<% end %>
+
+							<% @comments.each do |comment| %>
+								<% if comment.courseid == d["courseid"].to_i %>
+									<% myComments.push(comment.content) %>
+								<% end %>
+							<% end %>
+							<strong><%= myIssues.last %></strong>
+
+							<% if myComments.length > 0 %>
+								<strong>/<%= myComments.last %></strong>
+							<% end %>
+							</div>
+						</div>
+					</div>
+					<% @data.delete_at(@data.index(d)) %>
+				<% end %>
+			<% end %>
+		<% end %>
+
+		<% @data.each do |d| %>
+			<div class="list-group-item">
+				<div class='row'>
+					<div class='col-xs-6' style='padding-right: 3px;'>課程代碼: <%= d["courseid"] %></div>
+					<div class='col-xs-3'><%= d["generalclass"] %></div>
+					<div class='col-xs-3'><%= d["choose"] %></div>
+				</div>
+				<div class='row'>
+					<div class='col-xs-9'>
+						<%= link_to d["name"],course_path(d["courseid"]) %>
+						(<%= d["instructor"] %>)
+					</div>
+					<div class='col-xs-3'>
+							<% if d["agenda"] != false %>
+								<%= link_to '教學大綱',d["agenda"], class: 'btn btn-warning btn-xs', style: 'color:white' %>
+							<% end %>	
+					</div>
+				</div>
+					<div class='row'>
+						<div class='col-xs-12'>
+						<% myIssues = [] %>
+						<% myComments = [] %>
+						<% @issues.each do |issue| %>
+							<% if issue.courseid == d["courseid"].to_i %>
+								<% myIssues.push(issue.content) %>
+							<% end %>
+						<% end %>
+
+						<% @comments.each do |comment| %>
+							<% if comment.courseid == d["courseid"].to_i %>
+								<% myComments.push(comment.content) %>
+							<% end %>
+						<% end %>
+						<strong><%= myIssues.last %></strong>
+
+						<% if myComments.length > 0 %>
+							<strong>/<%= myComments.last %></strong>
+						<% end %>
+						</div>
+					</div>
+			</div>
+		<% end %>
+	</div>	
+</div>

@@ -91,6 +91,12 @@ class CoursesController < ApplicationController
 	  		@data = JSON.parse( raw_content )
 	  	end
 
+		respond_to do |format|
+			format.html
+			format.html.phone
+			format.html.tablet
+		end
+
 	end
 
 	def find_course

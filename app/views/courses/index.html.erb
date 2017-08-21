@@ -61,7 +61,7 @@
 				<% end %>
 				<% courseid.uniq! %>
 
-				<% courseid.each do |cid| %>
+				<% courseid.reverse.each do |cid| %>
 					<% @data.each do |d| %>
 						<% if d["courseid"].to_i == cid.to_i %>
 							<a class="list-group-item" href="<%= course_path(d["courseid"]) %>">

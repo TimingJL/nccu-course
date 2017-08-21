@@ -33,29 +33,7 @@ class CoursesController < ApplicationController
 
 	  	@searchName =[]
 	  	@searchInstructor =[]
-	  	# if current_user.uid.present?
-	   #      @fburl = "https://graph.facebook.com/" + 
-	   #            current_user.uid.to_s + 
-	   #            "?fields=name&access_token=EAAGh9CnwADwBAEmfDv9R9bw2mQiR8s9Cz4uvq8oshGvm1ijpabIxmkenYuB0DYRzkug0gw5ZAnaTBvkBARVUtiwsjMA36UUAQlZCWkoPYWaJBeCstWc0ZCVaK6gXO1wAPogEgEXkqLhjIV4osx4EVSAw21s4ZBEdu7KEwsxcQz75epsEZBP7UlmyfrDdSSdMZD"
-	   #      @raw_content = RestClient.get(@fburl)
-	   #      @fbData = JSON.parse(@raw_content)
-	   #      @fbPhotoUrl = "http://graph.facebook.com/"+@fbData["id"].to_s+"/picture"
-	   #  else
-	   #  	@fburl = "no url"
-	   #  	@raw_content = " no raw_content"
-	   #  	@fbData = "no fbData"
-	   #  end
 
-
-	 #  	if params[:name]
-		# 	@tempdata.each do |d|
-		# 		if (d["name"].include?params[:name])
-		# 			@data.push(d)
-		# 		end
-		# 	end
-		# elsif params[:search].blank?
-		# 	@data = JSON.parse( raw_content )
-	 #  	end
 
 	  	# Search
 	  	if params[:search]
@@ -113,31 +91,6 @@ class CoursesController < ApplicationController
 	  		@data = JSON.parse( raw_content )
 	  	end
 
-	  	# Search
-	 #  	if params[:search]
-		# 	@tempdata.each do |d|
-		# 		if (d["semester"].include?params[:search]) || 
-		# 			(d["courseid"].include?params[:search])	||
-		# 			(d["name"].include?params[:search]) || 
-		# 			(d["instructor"].include?params[:search]) || 
-		# 			(d["point"].include?params[:search]) || 
-		# 			(d["session"].include?params[:search]) || 
-		# 			(d["place"].include?params[:search]) || 
-		# 			(d["language"].include?params[:search]) || 
-		# 			(d["asgeneral"].include?params[:search]) || 
-		# 			(d["generalclass"].include?params[:search]) || 
-		# 			(d["length"].include?params[:search]) || 
-		# 			(d["choose"].include?params[:search]) || 
-		# 			(d["coregeneral"].include?params[:search]) || 
-		# 			(d["change"].include?params[:search]) || 
-		# 			(d["department"].include?params[:search]) ||
-		# 			(d["note"].include?params[:search])
-		# 			@data.push(d)
-		# 		end
-		# 	end
-		# elsif params[:search].blank?
-		# 	@data = JSON.parse( raw_content )
-	 #  	end
 	end
 
 	def find_course

@@ -32,19 +32,75 @@
 
         <div class='col-md-9'>
         	<div class="list-group">
-					<div class="list-group-item" style='background-color:#41cccc;color:white;font-weight: bold;'>
-						<div style='display: table-row;'>
-							<div style='display: table-cell;width:50px;'>學期</div>
-							<div style='display: table-cell;width:100px;padding-right:10px;'>課程名稱</div>
-							<div style='display: table-cell;width:60px;padding-right:10px;'>系所</div>
-							<div style='display: table-cell;width:60px;padding-right:10px;'>修別</div>
-							<div style='display: table-cell;width:50px;padding-right:10px;'>通識類別</div>
-							<div style='display: table-cell;width:100px;padding-right:10px;'>教師</div>
-							<div style='display: table-cell;width:100px;padding-right:10px;'>時間</div>
-							<div style='display: table-cell;width:100px;padding-right:10px;'>地點</div>
-							<div style='display: table-cell;width:inherit;padding-right:10px;'>最新留言</div>
-						</div>
+				<div class="list-group-item" style='background-color:#41cccc;color:white;font-weight: bold;'>
+					<div style='display: table-row;'>
+						<div style='display: table-cell;width:50px;'>學期</div>
+						<div style='display: table-cell;width:100px;padding-right:10px;'>課程名稱</div>
+						<div style='display: table-cell;width:60px;padding-right:10px;'>系所</div>
+						<div style='display: table-cell;width:60px;padding-right:10px;'>修別</div>
+						<div style='display: table-cell;width:50px;padding-right:10px;'>通識類別</div>
+						<div style='display: table-cell;width:100px;padding-right:10px;'>教師</div>
+						<div style='display: table-cell;width:100px;padding-right:10px;'>時間</div>
+						<div style='display: table-cell;width:100px;padding-right:10px;'>地點</div>
+						<div style='display: table-cell;width:inherit;padding-right:10px;'>最新留言</div>
 					</div>
+				</div>
+				<% issues = Issue.all %>
+				<% comments = Comment.all %>
+				<% courses = [] %>
+				<% courseid = [] %>
+				<% issues.each do |issue| %>
+					<% courses.push([issue.courseid, issue.updated_at]) %>
+				<% end %>
+				<% comments.each do |comment| %>
+					<% courses.push([comment.courseid, comment.updated_at]) %>
+				<% end %>
+				<% courses.sort_by{|courseid, updated_at| updated_at} %>
+				<% courses.each do |course| %>
+					<% courseid.push(course[0]) %>
+				<% end %>
+				<% courseid.uniq! %>
+
+				<% courseid.each do |cid| %>
+					<% @data.each do |d| %>
+						<% if d["courseid"].to_i == cid.to_i %>
+							<a class="list-group-item" href="<%= course_path(d["courseid"]) %>">
+								<div style='display: table-row;'>
+									<div style='display: table-cell;width:50px;'><%= d["semester"] %></div>
+									<div style='display: table-cell;width:100px;padding-right:10px;color:#5383d3;'><%= d["name"] %></div>
+									<div style='display: table-cell;width:60px;padding-right:10px;'><%= d["department"] %></div>
+									<div style='display: table-cell;width:60px;padding-right:10px;'><%= d["choose"] %></div>
+									<div style='display: table-cell;width:50px;padding-right:10px;'><%= d["generalclass"] %></div>
+									<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["instructor"] %></div>
+									<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["session"] %></div>
+									<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["place"] %></div>
+									<div style='display: table-cell;width:inherit;padding-right:10px;'>
+										<% myIssues = [] %>
+										<% myComments = [] %>
+										<% @issues.each do |issue| %>
+											<% if issue.courseid == d["courseid"].to_i %>
+												<% myIssues.push(issue.content) %>
+											<% end %>
+										<% end %>
+
+										<% @comments.each do |comment| %>
+											<% if comment.courseid == d["courseid"].to_i %>
+												<% myComments.push(comment.content) %>
+											<% end %>
+										<% end %>
+										<strong><%= myIssues.last %></strong>
+
+										<% if myComments.length > 0 %>
+											<strong>/<%= myComments.last %></strong>
+										<% end %>
+									</div>
+								</div>
+							</a>
+							<% @data.delete_at(@data.index(d)) %>
+						<% end %>
+					<% end %>
+				<% end %>
+
 	        	<% @data.each do |d| %>
 					<a class="list-group-item" href="<%= course_path(d["courseid"]) %>">
 						<div style='display: table-row;'>
@@ -64,7 +120,7 @@
 										<% myIssues.push(issue.content) %>
 									<% end %>
 								<% end %>
-								
+
 								<% @comments.each do |comment| %>
 									<% if comment.courseid == d["courseid"].to_i %>
 										<% myComments.push(comment.content) %>

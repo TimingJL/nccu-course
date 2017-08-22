@@ -45,6 +45,9 @@ https://ihower.tw/rails/auth.html
 * JDENTICON(Open source library for generating identicons)隨機大頭貼
 https://jdenticon.com/js-get-started.html
 
+* Using Google Analytics in Rails 4
+https://richonrails.com/articles/adding-google-analytics-to-your-rails-app-the-right-way
+
 * 國立政治大學通識課程架構表
 http://aca.nccu.edu.tw/download/formDownload/QP-T04-19-03.pdf
 

@@ -11,23 +11,24 @@
 	</div>
 
 	<div class="list-group">
-		<% issues = Issue.all %>
-		<% comments = Comment.all %>
-		<% courses = [] %>
-		<% courseid = [] %>
-		<% issues.each do |issue| %>
-			<% courses.push([issue.courseid, issue.updated_at]) %>
-		<% end %>
-		<% comments.each do |comment| %>
-			<% courses.push([comment.courseid, comment.updated_at]) %>
-		<% end %>
-		<% courses.sort_by{|courseid, updated_at| updated_at} %>
-		<% courses.each do |course| %>
-			<% courseid.push(course[0]) %>
-		<% end %>
-		<% courseid.uniq! %>
+			<% issues = Issue.all %>
+			<% comments = Comment.all %>
+			<% courses = [] %>
+			<% courseid = [] %>
+			<% issues.each do |issue| %>
+				<% courses.push([issue.courseid, issue.created_at]) %>
+			<% end %>
+			<% comments.each do |comment| %>
+				<% courses.push([comment.courseid, comment.created_at]) %>
+			<% end %>
+			<% courses = courses.sort_by{|courseid, created_at| created_at.to_time.to_i } %>
+			<% courses.reverse! %>
+			<% courses.each do |course| %>
+				<% courseid.push(course[0]) %>
+			<% end %>
+			<% courseid.uniq! %>
 
-		<% courseid.reverse.each do |cid| %>
+			<% courseid.each do |cid| %>
 			<% @data.each do |d| %>
 				<% if d["courseid"].to_i == cid.to_i %>
 					<div class="list-group-item">

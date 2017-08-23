@@ -4,7 +4,7 @@ $navbar-font-family: 'Microsoft JhengHei', 'cwtexhei','Archivo Black', sans-seri
 
 .navbar-default {
     background-color: $navbar-background-color;
-    background-repeat: repeat; 
+    /*background-repeat: repeat; */
 
     border-color: $navbar-background-color-hover;
     border-width: 0px;
@@ -17,6 +17,8 @@ $navbar-font-family: 'Microsoft JhengHei', 'cwtexhei','Archivo Black', sans-seri
     color: white;
     font-size: 30px;
     font-weight: 900;
+    background-image: url(image_path("nccu-course-logo.PNG"));
+    background-repeat:no-repeat;
 }
 
 

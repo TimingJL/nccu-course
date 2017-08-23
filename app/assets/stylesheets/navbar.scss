@@ -1,10 +1,10 @@
 $navbar-background-color: #292c2f;
 $navbar-background-color-hover: #41cccc;
-$navbar-font-family: 'Microsoft JhengHei', 'cwtexhei','Archivo Black', sans-serif;
+$navbar-font-family: 'source-han-sans-traditional', 'cwtexhei','Archivo Black', sans-serif;
 
 .navbar-default {
     background-color: $navbar-background-color;
-    /*background-repeat: repeat; */
+    background-repeat: repeat; 
 
     border-color: $navbar-background-color-hover;
     border-width: 0px;
@@ -15,12 +15,9 @@ $navbar-font-family: 'Microsoft JhengHei', 'cwtexhei','Archivo Black', sans-seri
 
 .navbar-default .navbar-brand {
     color: white;
-    font-size: 30px;
-    font-weight: 900;
-    background-image: url(image_path("nccu-course-logo.PNG"));
-    background-repeat:no-repeat;
+    font-family: $navbar-font-family;
+    font-size: 32px;
 }
-
 
 .navbar-default .navbar-brand:hover {
     color: white;
@@ -46,9 +43,10 @@ $navbar-font-family: 'Microsoft JhengHei', 'cwtexhei','Archivo Black', sans-seri
 
 .navbar-default .navbar-brand-course{
   color: #5383d3;
-  font-size: 40px;
-  font-family: "Microsoft JhengHei", "cwtexhei", "Archivo Black", sans-serif;
+  font-size: 25px;
+  font-family: 'Francois One', sans-serif;
 }
+
 
 
 

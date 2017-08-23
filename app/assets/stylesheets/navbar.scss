@@ -1,6 +1,6 @@
 $navbar-background-color: #292c2f;
 $navbar-background-color-hover: #41cccc;
-$navbar-font-family: 'source-han-sans-traditional', 'cwtexhei','Archivo Black', sans-serif;
+$navbar-font-family: 'Microsoft JhengHei', 'cwtexhei','Archivo Black', sans-serif;
 
 .navbar-default {
     background-color: $navbar-background-color;
@@ -15,8 +15,6 @@ $navbar-font-family: 'source-han-sans-traditional', 'cwtexhei','Archivo Black', 
 
 .navbar-default .navbar-brand {
     color: white;
-
-    font-family: "Microsoft JhengHei", "cwtexhei", "Archivo Black", sans-serif;
     font-size: 30px;
     font-weight: 900;
 }

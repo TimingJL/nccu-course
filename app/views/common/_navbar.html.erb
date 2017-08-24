@@ -56,6 +56,9 @@
             <li><%= link_to('帳號編輯', edit_user_registration_path) %></li>
             <% if user_signed_in? %>
               <li>
+              <% if current_user.admin == true %>
+                <li><%= link_to('管理後台', rails_admin_path) %></li>
+              <% end %>
               <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
               <!-- <li><%= link_to('User', users_path) %></li>         -->
               </li>

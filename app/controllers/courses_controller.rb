@@ -7,6 +7,7 @@ class CoursesController < ApplicationController
 	def index
 		@issues = Issue.all
 		@comments = Comment.all
+		@courses = Course.all
 	end
 
 	def show

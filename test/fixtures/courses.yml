@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  courseid: 1
+  semester: MyString
+  instructor: MyString
+  point: MyString
+  session: MyString
+  place: MyString
+  language: MyString
+  asgeneral: MyString
+  generalclass: MyString
+  department: MyString
+  length: 1
+  choose: MyString
+  coregeneral: MyString
+  agenda: MyString
+  name: MyString
+  change: MyString
+  note: MyString
+
+two:
+  courseid: 1
+  semester: MyString
+  instructor: MyString
+  point: MyString
+  session: MyString
+  place: MyString
+  language: MyString
+  asgeneral: MyString
+  generalclass: MyString
+  department: MyString
+  length: 1
+  choose: MyString
+  coregeneral: MyString
+  agenda: MyString
+  name: MyString
+  change: MyString
+  note: MyString

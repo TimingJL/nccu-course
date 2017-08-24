@@ -6,7 +6,12 @@
   <div class="form-group">
     <%= f.label :username %>
     <%= f.text_field :username, class: "form-control", :autofocus => true %>
-  </div>  
+  </div>
+
+  <div class="form-group">
+    <%= f.label :admin %>
+    <%= f.check_box :admin, class: "form-control", :autofocus => true %>
+  </div> 
 
   <div class="field">
     <%= f.label :email %><br />

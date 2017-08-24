@@ -158,7 +158,7 @@
 					<% end %>
 				<% end %>
 
-	        	<% @data.each do |d| %>
+	        	<% @data[0..20].each do |d| %>
 					<a class="list-group-item" href="<%= course_path(d["courseid"]) %>">
 						<div style='display: table-row;'>
 							<div style='display: table-cell;width:50px;'><%= d["semester"] %></div>
@@ -192,12 +192,85 @@
 							</div>
 						</div>
 					</a>
+					<% @data.delete_at(@data.index(d)) %>
 	        	<% end %>
+    <script type="text/javascript">
+    var clicks = 0;
+    function onClick() {
+        clicks += 1;
+        document.getElementById("clicks").innerHTML = clicks;
+    };
+    </script>
+    <button type="button" onClick="onClick()">Click me</button>
+    <p>Clicks: <a id="clicks">0</a></p>
+				<div id='seeMore'></div>
+				<div id="head"></div>
+
+	        	<button onclick="seeMore()">查看更多</button>
         	</div>
         </div>
 
     </div>
 </div>
+
+<script>
+var num = 20;
+var head = 0;
+var tail = num;
+<% head = 0 %>
+<% tail = 20 %>
+function seeMore(){
+	var node = document.createElement("div");
+	// document.getElementById("test").innerHTML = data;
+
+	var dataHtml = "<% @data[head..tail].each do |d| %>"+
+		"<a class='list-group-item' href='<%= course_path(d["courseid"]) %>'>"+
+			"<div style='display: table-row;'>"+
+				"<div style='display: table-cell;width:50px;'><%= d["semester"] %></div>"+
+				"<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["courseid"] %></div>"+
+				"<div style='display: table-cell;width:100px;padding-right:10px;color:#5383d3;'><%= d["name"] %></div>"+
+				"<div style='display: table-cell;width:60px;padding-right:10px;'><%= d["department"] %></div>"+
+				"<div style='display: table-cell;width:60px;padding-right:10px;'><%= d["choose"] %></div>"+
+				"<div style='display: table-cell;width:50px;padding-right:10px;'><%= d["generalclass"] %></div>"+
+				"<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["instructor"] %></div>"+
+				"<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["session"] %></div>"+
+				"<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["place"] %></div>"+
+				"<div style='display: table-cell;width:inherit;padding-right:10px;'>"+
+					"<% myIssues = [] %>"+
+					"<% myComments = [] %>"+
+					"<% @issues.each do |issue| %>"+
+						"<% if issue.courseid == d["courseid"].to_i %>"+
+							"<% myIssues.push(issue.content) %>"+
+						"<% end %>"+
+					"<% end %>"+
+
+					"<% @comments.each do |comment| %>"+
+						"<% if comment.courseid == d["courseid"].to_i %>"+
+							"<% myComments.push(comment.content) %>"+
+						"<% end %>"+
+					"<% end %>"+
+					"<strong><%= myIssues.last %></strong>"+
+
+					"<% if myComments.length > 0 %>"+
+						"<strong>/<%= myComments.last %></strong>"+
+					"<% end %>"+
+				"</div>"+
+			"</div>"+
+		"</a>"+ String("<%= @data.length %>")+
+		"<% @data.delete_at(@data.index(d)) %>"+
+	"<% end %>";
+	// node.appendChild(availableTags);
+	// document.getElementById('seeMore').innerHTML = dataHtml;
+	// head = tail;
+	// tail = tail + num;
+
+	node.innerHTML = dataHtml;
+	document.getElementById('seeMore').appendChild(node);
+}
+
+
+</script>
+
 
 <!-- 
 <div class='container'>

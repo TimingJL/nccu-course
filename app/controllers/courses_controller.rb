@@ -18,8 +18,42 @@ class CoursesController < ApplicationController
 		@issue = Issue.new
 	end
 
-	def new
+	def create
+		@courses = Course.all
+	  	url = 'https://raw.githubusercontent.com/TimingJL/nccu-course/master/data/10601coursedata.json'
+	  	raw_content = RestClient.get(url)
+	  	@tempdata = JSON.parse( raw_content )
+
+	  	@tempdata.each do |d|
+	  		if !(Course.exists?(:courseid => d["courseid"]))
+
+	  			@course = Course.new(:courseid => d["courseid"],
+	  					:semester => d["semester"],
+	  					:instructor => d["instructor"],
+	  					:point => d["point"],
+	  					:session => d["session"],
+	  					:place => d["place"],
+	  					:language => d["language"],
+	  					:asgeneral => d["asgeneral"],
+	  					:generalclass => d["generalclass"],
+	  					:department => d["department"],
+	  					:length => d["length"],
+	  					:choose => d["choose"],
+	  					:coregeneral => d["coregeneral"],
+	  					:agenda => d["agenda"],
+	  					:name => d["name"],
+	  					:change => d["change"],
+	  					:note => d["note"]
+	  				)
+	  			@course.save
+	  		end
+	  	end		
 	end
+
+	def new
+		@course = Course.new
+	end
+
 
 	private
 

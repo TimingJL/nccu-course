@@ -54,6 +54,10 @@ class CoursesController < ApplicationController
 		@course = Course.new
 	end
 
+	def destroy
+		Course.delete_all
+		redirect_to root_path
+	end
 
 	private
 

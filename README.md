@@ -39,6 +39,10 @@ https://github.com/danweller18/devise/wiki
 * RailsAdmin
 https://github.com/rails-admin/rails_admin
 
+* 如何限制只有admin身份的人進 /admin
+http://railsfun.tw/t/admin-admin/963
+https://www.youtube.com/watch?v=agzm_O-pZFE
+
 * Authorization
 https://ihower.tw/rails/auth.html
 

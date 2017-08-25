@@ -100,7 +100,6 @@
 							<div style='display: table-cell;width:100px;padding-right:10px;'>教師</div>
 							<div style='display: table-cell;width:100px;padding-right:10px;'>時間</div>
 							<div style='display: table-cell;width:100px;padding-right:10px;'>地點</div>
-							<div style='display: table-cell;width:inherit;padding-right:10px;'>最新留言</div>
 						</div>
 					</div>
 
@@ -118,7 +117,9 @@
 										<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["instructor"] %></div>
 										<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["session"] %></div>
 										<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["place"] %></div>
-										<div style='display: table-cell;width:inherit;padding-right:10px;'>
+									</div>
+									<div style='margin-top: 10px;'>
+										<div style='display: table-cell;'>
 											<% myIssues = [] %>
 											<% myComments = [] %>
 											<% @issues.each do |issue| %>
@@ -158,7 +159,6 @@
 						<div style='display: table-cell;width:100px;padding-right:10px;'>教師</div>
 						<div style='display: table-cell;width:100px;padding-right:10px;'>時間</div>
 						<div style='display: table-cell;width:100px;padding-right:10px;'>地點</div>
-						<div style='display: table-cell;width:inherit;padding-right:10px;'>最新留言</div>
 					</div>
 				</div>
 	        	<% @courses.each do |d| %>
@@ -173,17 +173,19 @@
 							<div style='display: table-cell;width:100px;padding-right:10px;'><%= d.instructor %></div>
 							<div style='display: table-cell;width:100px;padding-right:10px;'><%= d.session %></div>
 							<div style='display: table-cell;width:100px;padding-right:10px;'><%= d.place %></div>
-							<div style='display: table-cell;width:inherit;padding-right:10px;'>
+						</div>
+						<div style='margin-top: 10px;'>
+							<div style='display: table-cell;'>
 								<% myIssues = [] %>
 								<% myComments = [] %>
 								<% @issues.each do |issue| %>
-									<% if issue.courseid == d.courseid.to_i %>
+									<% if issue.courseid == d["courseid"].to_i %>
 										<% myIssues.push(issue.content) %>
 									<% end %>
 								<% end %>
 
 								<% @comments.each do |comment| %>
-									<% if comment.courseid == d.courseid.to_i %>
+									<% if comment.courseid == d["courseid"].to_i %>
 										<% myComments.push(comment.content) %>
 									<% end %>
 								<% end %>

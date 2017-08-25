@@ -18,7 +18,7 @@ class Course < ApplicationRecord
 	  # 	"%#{search}%",
 	  # 	"%#{search}%",
 	  # 	"%#{search}%")
-	  where("courseid LIKE ? OR generalclass LIKE ?" ,"%#{search}%", "%#{search}%")
+	  where("courseid LIKE ? OR generalclass LIKE ?" ,"#{search}", "#{search}")
 
 	end
 end

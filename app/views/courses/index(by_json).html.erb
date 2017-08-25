@@ -83,12 +83,12 @@
             </div>
         </div>
 
-
+<%= paginate @courses, theme: 'twitter-bootstrap-4' %>
+<% @courses.each do |c| %>
+	<div><%= c.name %></div>
+<% end %>
         <div class='col-md-12'>
         	<div class="list-group">
-        		<% if params[:page].to_i == 1 || params[:page] == nil %>
-        		
-        		<h1>最新留言</h1>
 				<div class="list-group-item" style='background-color:#41cccc;color:white;font-weight: bold;'>
 					<div style='display: table-row;'>
 						<div style='display: table-cell;width:50px;'>學期</div>
@@ -103,8 +103,24 @@
 						<div style='display: table-cell;width:inherit;padding-right:10px;'>最新留言</div>
 					</div>
 				</div>
+				<% issues = Issue.all %>
+				<% comments = Comment.all %>
+				<% courses = [] %>
+				<% courseid = [] %>
+				<% issues.each do |issue| %>
+					<% courses.push([issue.courseid, issue.created_at]) %>
+				<% end %>
+				<% comments.each do |comment| %>
+					<% courses.push([comment.courseid, comment.created_at]) %>
+				<% end %>
+				<% courses = courses.sort_by{|courseid, created_at| created_at.to_time.to_i } %>
+				<% courses.reverse! %>
+				<% courses.each do |course| %>
+					<% courseid.push(course[0]) %>
+				<% end %>
+				<% courseid.uniq! %>
 
-				<% @course_order[0..20].each do |cid| %>
+				<% courseid.each do |cid| %>
 					<% @data.each do |d| %>
 						<% if d["courseid"].to_i == cid.to_i %>
 							<a class="list-group-item" href="<%= course_path(d["courseid"]) %>">
@@ -140,50 +156,34 @@
 									</div>
 								</div>
 							</a>
+							<% @data.delete_at(@data.index(d)) %>
 						<% end %>
 					<% end %>
 				<% end %>
-				<% end %>
-				<!-- newest above -->
 
-				<%= paginate @courses, theme: 'twitter-bootstrap-4' %>
-				<div class="list-group-item" style='background-color:#41cccc;color:white;font-weight: bold;margin-top: 30px;'>
-					<div style='display: table-row;'>
-						<div style='display: table-cell;width:50px;'>學期</div>
-						<div style='display: table-cell;width:100px;padding-right:10px;'>課程代碼</div>
-						<div style='display: table-cell;width:100px;padding-right:10px;'>課程名稱</div>
-						<div style='display: table-cell;width:60px;padding-right:10px;'>系所</div>
-						<div style='display: table-cell;width:60px;padding-right:10px;'>修別</div>
-						<div style='display: table-cell;width:50px;padding-right:10px;'>通識類別</div>
-						<div style='display: table-cell;width:100px;padding-right:10px;'>教師</div>
-						<div style='display: table-cell;width:100px;padding-right:10px;'>時間</div>
-						<div style='display: table-cell;width:100px;padding-right:10px;'>地點</div>
-						<div style='display: table-cell;width:inherit;padding-right:10px;'>最新留言</div>
-					</div>
-				</div>
-	        	<% @courses.each do |d| %>
-					<a class="list-group-item" href="<%= course_path(d.courseid) %>">
+	        	<% @data.each do |d| %>
+					<a class="list-group-item" href="<%= course_path(d["courseid"]) %>">
 						<div style='display: table-row;'>
-							<div style='display: table-cell;width:50px;'><%= d.semester %></div>
-							<div style='display: table-cell;width:100px;padding-right:10px;'><%= d.courseid %></div>
-							<div style='display: table-cell;width:100px;padding-right:10px;color:#5383d3;'><%= d.name %></div>
-							<div style='display: table-cell;width:60px;padding-right:10px;'><%= d.department %></div>
-							<div style='display: table-cell;width:60px;padding-right:10px;'><%= d.choose %></div>
-							<div style='display: table-cell;width:50px;padding-right:10px;'><%= d.generalclass %></div>
-							<div style='display: table-cell;width:100px;padding-right:10px;'><%= d.instructor %></div>
-							<div style='display: table-cell;width:100px;padding-right:10px;'><%= d.session %></div>
-							<div style='display: table-cell;width:100px;padding-right:10px;'><%= d.place %></div>
+							<div style='display: table-cell;width:50px;'><%= d["semester"] %></div>
+							<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["courseid"] %></div>
+							<div style='display: table-cell;width:100px;padding-right:10px;color:#5383d3;'><%= d["name"] %></div>
+							<div style='display: table-cell;width:60px;padding-right:10px;'><%= d["department"] %></div>
+							<div style='display: table-cell;width:60px;padding-right:10px;'><%= d["choose"] %></div>
+							<div style='display: table-cell;width:50px;padding-right:10px;'><%= d["generalclass"] %></div>
+							<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["instructor"] %></div>
+							<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["session"] %></div>
+							<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["place"] %></div>
 							<div style='display: table-cell;width:inherit;padding-right:10px;'>
 								<% myIssues = [] %>
 								<% myComments = [] %>
 								<% @issues.each do |issue| %>
-									<% if issue.courseid == d.courseid.to_i %>
+									<% if issue.courseid == d["courseid"].to_i %>
 										<% myIssues.push(issue.content) %>
 									<% end %>
 								<% end %>
 
 								<% @comments.each do |comment| %>
-									<% if comment.courseid == d.courseid.to_i %>
+									<% if comment.courseid == d["courseid"].to_i %>
 										<% myComments.push(comment.content) %>
 									<% end %>
 								<% end %>
@@ -195,10 +195,66 @@
 							</div>
 						</div>
 					</a>
+					<% @data.delete_at(@data.index(d)) %>
 	        	<% end %>
-	        	<%= paginate @courses, theme: 'twitter-bootstrap-4' %>
         	</div>
         </div>
 
     </div>
 </div>
+
+
+<!-- 
+<div class='container'>
+	<table class="table table-hover">
+	    <thead>
+	      <tr>
+	      	<th style="width:70px;">學年期</th>
+	        <th>科目代號</th>
+	        <th>課程名稱</th>
+	        <th>任課教師</th>
+	        <th style="width:60px;">學分</th>
+	        <th>Session</th>
+	        <th style="width:60px;">教室</th>
+	        <th style="width:80px;">授課語言</th>
+	        <th style="width:120px;">得充抵通識</th>
+	        <th style="width:110px;">通識類別</th>
+	        <th style="width:60px;">期數</th>
+	        <th style="width:60px;">修別</th>
+	        <th style="width:110px;">核心通識</th>
+	        <th>異動資訊</th>
+	        <th>備註</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+			<% @data.each do |d| %>
+				<tr href="<%= course_path(d["courseid"]) %>" style='cursor:pointer;'>
+					<td><%= d["semester"] %></td>
+					<td><%= d["courseid"] %></td>
+					<td><%= d["name"] %></td>
+					<td><%= d["instructor"] %></td>
+					<td><%= d["point"] %></td>
+					<td><%= d["session"] %></td>
+					<td><%= d["place"] %></td>
+					<td><%= simple_format d["language"] %></td>
+					<td><%= d["asgeneral"] %></td>
+					<td><%= d["generalclass"] %></td>
+					<td><%= d["length"] %></td>
+					<td><%= simple_format d["choose"] %></td>
+					<td><%= simple_format d["coregeneral"] %></td>
+					<td><%= d["change"] %></td>	
+					<td><%= d["note"] %></td>
+				</tr>
+			<% end %>
+	    </tbody>
+	</table>
+</div>
+
+<script>
+$(document).ready(function(){
+    $('table tr').click(function(){
+        window.location = $(this).attr('href');
+        return false;
+    });
+});
+</script> -->

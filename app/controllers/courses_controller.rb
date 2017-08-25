@@ -7,7 +7,24 @@ class CoursesController < ApplicationController
 	def index
 		@issues = Issue.all
 		@comments = Comment.all
-		@courses = Course.all
+
+		collection = []
+		@course_order = []
+		@issues.each do |issue|
+			collection.push([issue.courseid, issue.created_at])
+		end
+		@comments.each do |comment|
+			collection.push([comment.courseid, comment.created_at])
+		end
+		collection = collection.sort_by{|courseid, created_at| created_at.to_time.to_i }
+		collection.reverse!
+		collection.each do |course|
+			@course_order.push(course[0])
+		end
+		@course_order.uniq!
+
+
+		@courses = Course.page(params[:page]).per(100)
 	end
 
 	def show
@@ -25,7 +42,7 @@ class CoursesController < ApplicationController
 	 #  	raw_content = RestClient.get(url)
 	 #  	@tempdata = JSON.parse( raw_content )
 
-	 #  	@tempdata.each do |d|
+	 #  	@tempdata[0..20].each do |d|
 	 #  		if !(Course.exists?(:courseid => d["courseid"]))
 
 	 #  			@course = Course.new(:courseid => d["courseid"],

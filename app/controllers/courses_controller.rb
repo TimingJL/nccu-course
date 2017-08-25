@@ -24,8 +24,8 @@ class CoursesController < ApplicationController
 		@course_order.uniq!
 
 		if params[:search]
-			#@courses = Course.search(params[:search]).page(params[:page]).per(100)
-			@courses = Course.page(params[:page]).per(100)
+			@courses = Course.search(params[:search]).page(params[:page]).per(100)
+			#@courses = Course.page(params[:page]).per(100)
 		else
 			@courses = Course.page(params[:page]).per(100)
 		end

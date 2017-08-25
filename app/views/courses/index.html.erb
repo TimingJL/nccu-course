@@ -89,7 +89,6 @@
         		<%= paginate @courses, theme: 'twitter-bootstrap-4' %>
         		<% if (params[:page].to_i == 1 || params[:page] == nil) && params[:search] == nil %>        		
 					<h1 style='font-weight: 900;'>最新留言</h1>
-					params[:page]: <%= params[:page] %>
 					<div class="list-group-item" style='background-color:#41cccc;color:white;font-weight: bold;'>
 						<div style='display: table-row;'>
 							<div style='display: table-cell;width:50px;'>學期</div>

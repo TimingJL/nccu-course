@@ -1,82 +1,82 @@
 <div class='row'>
-	<div class="list-group" style='margin-top: 5px;'>
+		<div class="list-group" style='margin-top: 5px;'>
 
-  <div class="list-group-item">
-		<form>
-	        <div class="input-group">
-	          <div><%= text_field_tag :search, params[:search], placeholder: "搜尋課程、教師、各種關鍵字......", class: "form-control" ,style: "width:100%;min-width:100%;" %></div>
-	          <span class="input-group-btn">
-	            <button id='btn-search' class="btn btn-secondary" type="submit" style='color:white;'><i class="fa fa-search" aria-hidden="true"></i></button>
-	          </span>
-	        </div>
-        </form>
-        <div class='container'>
-    				<div class="row">
-    					<div class='col-xs-4'>
+			<div class="list-group-item">
+				<form>
+			        <div class="input-group">
+			          <div><%= text_field_tag :search, params[:search], placeholder: "搜尋課程、教師、各種關鍵字......", class: "form-control" ,style: "width:100%;min-width:100%;" %></div>
+			          <span class="input-group-btn">
+			            <button id='btn-search' class="btn btn-secondary" type="submit" style='color:white;'><i class="fa fa-search" aria-hidden="true"></i></button>
+			          </span>
+			        </div>
+		        </form>
+		        <div class='container'>
+					<div class="row">
+						<div class='col-xs-4'>
 					        <form>
 					            <%= text_field_tag :search, params[:search], value: '社會通識',style: "visibility: hidden; height:0px;width:0px;" %>
 					            <input type="submit" style='width: 100%' class="btn btn-warning" value="社會通識">
 					        </form>
-    					</div>
-    					<div class='col-xs-4'>
+						</div>
+						<div class='col-xs-4'>
 					        <form>
 					            <%= text_field_tag :search, params[:search], value: '自然通識',style: "visibility: hidden; height:0px;width:0px;" %>
 					            <input type="submit" style='width: 100%' class="btn btn-warning" value="自然通識">
 					        </form>
-    					</div>
-    					<div class='col-xs-4'>
+						</div>
+						<div class='col-xs-4'>
 					        <form>
 					            <%= text_field_tag :search, params[:search], value: '中文通識',style: "visibility: hidden; height:0px;width:0px;" %>
 					            <input type="submit" style='width: 100%' class="btn btn-warning" value="中文通識">
 					        </form>
-    					</div>
+						</div>
 					</div>
 					<div class="row">
-    					<div class='col-xs-4'>
+						<div class='col-xs-4'>
 					        <form>
 					            <%= text_field_tag :search, params[:search], value: '外文通識',style: "visibility: hidden; height:0px;width:0px;" %>
 					            <input type="submit" style='width: 100%' class="btn btn-warning" value="外文通識">
 					        </form>
-    					</div>
-    					<div class='col-xs-4'>
+						</div>
+						<div class='col-xs-4'>
 					        <form>
 					            <%= text_field_tag :search, params[:search], value: '人文通識',style: "visibility: hidden; height:0px;width:0px;" %>
 					            <input type="submit" style='width: 100%' class="btn btn-warning" value="人文通識">
 					        </form>
-    					</div>
-    					<div class='col-xs-4'>
+						</div>
+						<div class='col-xs-4'>
 					        <form>
 					            <%= text_field_tag :search, params[:search], value: '跨領域',style: "visibility: hidden; height:0px;width:0px;" %>
 					            <input type="submit" style='width: 100%;' class="btn btn-warning" value="跨領域">
 					        </form>
 					    </div>
-    				</div>
-  </div>
+					</div>
+				</div>
 
 
-        </div>
-	</div>
+		    </div>
+		</div>
 	
 
-	<div class="list-group">
-			<% issues = Issue.all %>
-			<% comments = Comment.all %>
-			<% courses = [] %>
-			<% courseid = [] %>
-			<% issues.each do |issue| %>
-				<% courses.push([issue.courseid, issue.created_at]) %>
-			<% end %>
-			<% comments.each do |comment| %>
-				<% courses.push([comment.courseid, comment.created_at]) %>
-			<% end %>
-			<% courses = courses.sort_by{|courseid, created_at| created_at.to_time.to_i } %>
-			<% courses.reverse! %>
-			<% courses.each do |course| %>
-				<% courseid.push(course[0]) %>
-			<% end %>
-			<% courseid.uniq! %>
-
-			<% courseid.each do |cid| %>
+		<div class="list-group">
+			<%= paginate @courses, theme: 'twitter-bootstrap-4' %>
+    		<% if (params[:page] == "1" || (params[:page].blank? && params[:search].blank? && params[:name].blank? && params[:instructor].blank? && params[:department].blank?)) %>        		
+			<h1 style='font-weight: 900;'>最新留言</h1>	
+			<div class="list-group-item" style='background-color:#41cccc;color:white;font-weight: bold;margin-top: 30px;'>
+				<div style='display: table-row;'>
+					<div style='display: table-cell;width:50px;'>學期</div>
+					<div style='display: table-cell;width:100px;padding-right:10px;'>課程代碼</div>
+					<div style='display: table-cell;width:100px;padding-right:10px;'>課程名稱</div>
+					<div style='display: table-cell;width:60px;padding-right:10px;'>系所</div>
+					<div style='display: table-cell;width:60px;padding-right:10px;'>修別</div>
+					<div style='display: table-cell;width:50px;padding-right:10px;'>通識類別</div>
+					<div style='display: table-cell;width:100px;padding-right:10px;'>教師</div>
+					<div style='display: table-cell;width:100px;padding-right:10px;'>時間</div>
+					<div style='display: table-cell;width:100px;padding-right:10px;'>地點</div>
+					<div style='display: table-cell;width:inherit;padding-right:10px;'>最新留言</div>
+				</div>
+			</div>
+			<% @course_order[0..20].each do |cid| %>
 			<% @data.each do |d| %>
 				<% if d["courseid"].to_i == cid.to_i %>
 					<div class="list-group-item">
@@ -124,22 +124,39 @@
 				<% end %>
 			<% end %>
 		<% end %>
+		<% end %>
+		<!-- newest above -->
 
-		<% @data.each do |d| %>
+				
+		<div class="list-group-item" style='background-color:#41cccc;color:white;font-weight: bold;margin-top: 30px;'>
+			<div style='display: table-row;'>
+				<div style='display: table-cell;width:50px;'>學期</div>
+				<div style='display: table-cell;width:100px;padding-right:10px;'>課程代碼</div>
+				<div style='display: table-cell;width:100px;padding-right:10px;'>課程名稱</div>
+				<div style='display: table-cell;width:60px;padding-right:10px;'>系所</div>
+				<div style='display: table-cell;width:60px;padding-right:10px;'>修別</div>
+				<div style='display: table-cell;width:50px;padding-right:10px;'>通識類別</div>
+				<div style='display: table-cell;width:100px;padding-right:10px;'>教師</div>
+				<div style='display: table-cell;width:100px;padding-right:10px;'>時間</div>
+				<div style='display: table-cell;width:100px;padding-right:10px;'>地點</div>
+				<div style='display: table-cell;width:inherit;padding-right:10px;'>最新留言</div>
+			</div>
+		</div>
+		<% @courses.each do |d| %>
 			<div class="list-group-item">
 				<div class='row'>
-					<div class='col-xs-6' style='padding-right: 3px;'>課程代碼: <%= d["courseid"] %></div>
-					<div class='col-xs-3'><%= d["generalclass"] %></div>
-					<div class='col-xs-3'><%= d["choose"] %></div>
+					<div class='col-xs-6' style='padding-right: 3px;'>課程代碼: <%= d.courseid %></div>
+					<div class='col-xs-3'><%= d.generalclass %></div>
+					<div class='col-xs-3'><%= d.choose %></div>
 				</div>
 				<div class='row'>
 					<div class='col-xs-9'>
-						<%= link_to d["name"],course_path(d["courseid"]) %>
-						(<%= d["instructor"] %>)
+						<%= link_to d.name,course_path(d.courseid) %>
+						(<%= d.instructor %>)
 					</div>
 					<div class='col-xs-3'>
-							<% if d["agenda"] != false %>
-								<%= link_to '教學大綱',d["agenda"], class: 'btn btn-warning btn-xs', style: 'color:white' %>
+							<% if d.agenda != false %>
+								<%= link_to '教學大綱',d.agenda, class: 'btn btn-warning btn-xs', style: 'color:white' %>
 							<% end %>	
 					</div>
 				</div>
@@ -149,13 +166,13 @@
 						<% myIssues = [] %>
 						<% myComments = [] %>
 						<% @issues.each do |issue| %>
-							<% if issue.courseid == d["courseid"].to_i %>
+							<% if issue.courseid == d.courseid.to_i %>
 								<% myIssues.push(issue.content) %>
 							<% end %>
 						<% end %>
 
 						<% @comments.each do |comment| %>
-							<% if comment.courseid == d["courseid"].to_i %>
+							<% if comment.courseid == d.courseid.to_i %>
 								<% myComments.push(comment.content) %>
 							<% end %>
 						<% end %>

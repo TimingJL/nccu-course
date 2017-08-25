@@ -90,7 +90,7 @@
         		<% if (params[:page] == "1" || (params[:page].blank? && params[:search].blank? && params[:name].blank? && params[:instructor].blank? && params[:department].blank?)) %>        		
 					<h1 style='font-weight: 900;font-family:"微軟正黑體";'>最新留言</h1>
 					<div class="list-group-item" style='background-color:#41cccc;color:white;font-weight: bold;'>
-						<div style='display: table-row;'>
+						<div style='display: table-row;font-family:"微軟正黑體";'>
 							<div style='display: table-cell;width:50px;'>學期</div>
 							<div style='display: table-cell;width:100px;padding-right:10px;'>課程代碼</div>
 							<div style='display: table-cell;width:100px;padding-right:10px;'>課程名稱</div>
@@ -107,7 +107,7 @@
 						<% @data.each do |d| %>
 							<% if d["courseid"].to_i == cid.to_i %>
 								<a class="list-group-item" href="<%= course_path(d["courseid"]) %>">
-									<div style='display: table-row;'>
+									<div style='display: table-row;font-family:"微軟正黑體";'>
 										<div style='display: table-cell;width:50px;'><%= d["semester"] %></div>
 										<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["courseid"] %></div>
 										<div style='display: table-cell;width:100px;padding-right:10px;color:#5383d3;'><%= d["name"] %></div>
@@ -119,7 +119,7 @@
 										<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["place"] %></div>
 									</div>
 									<div style='margin-top: 10px;'>
-										<div style='display: table-cell;'>
+										<div style='display: table-cell;font-family:"微軟正黑體";'>
 											<% myIssues = [] %>
 											<% myComments = [] %>
 											<% @issues.each do |issue| %>

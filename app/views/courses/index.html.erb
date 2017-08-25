@@ -86,67 +86,67 @@
 
         <div class='col-md-12'>
         	<div class="list-group">
-        		<% if params[:page].to_i == 1 || params[:page] == nil %>
-        		
-        		<h1 style='font-weight: 900;'>最新留言</h1>
-				<div class="list-group-item" style='background-color:#41cccc;color:white;font-weight: bold;'>
-					<div style='display: table-row;'>
-						<div style='display: table-cell;width:50px;'>學期</div>
-						<div style='display: table-cell;width:100px;padding-right:10px;'>課程代碼</div>
-						<div style='display: table-cell;width:100px;padding-right:10px;'>課程名稱</div>
-						<div style='display: table-cell;width:60px;padding-right:10px;'>系所</div>
-						<div style='display: table-cell;width:60px;padding-right:10px;'>修別</div>
-						<div style='display: table-cell;width:50px;padding-right:10px;'>通識類別</div>
-						<div style='display: table-cell;width:100px;padding-right:10px;'>教師</div>
-						<div style='display: table-cell;width:100px;padding-right:10px;'>時間</div>
-						<div style='display: table-cell;width:100px;padding-right:10px;'>地點</div>
-						<div style='display: table-cell;width:inherit;padding-right:10px;'>最新留言</div>
+        		<%= paginate @courses, theme: 'twitter-bootstrap-4' %>
+        		<% if params[:page].to_i == 1 || params[:page] == nil %>        		
+					<h1 style='font-weight: 900;'>最新留言</h1>
+					<div class="list-group-item" style='background-color:#41cccc;color:white;font-weight: bold;'>
+						<div style='display: table-row;'>
+							<div style='display: table-cell;width:50px;'>學期</div>
+							<div style='display: table-cell;width:100px;padding-right:10px;'>課程代碼</div>
+							<div style='display: table-cell;width:100px;padding-right:10px;'>課程名稱</div>
+							<div style='display: table-cell;width:60px;padding-right:10px;'>系所</div>
+							<div style='display: table-cell;width:60px;padding-right:10px;'>修別</div>
+							<div style='display: table-cell;width:50px;padding-right:10px;'>通識類別</div>
+							<div style='display: table-cell;width:100px;padding-right:10px;'>教師</div>
+							<div style='display: table-cell;width:100px;padding-right:10px;'>時間</div>
+							<div style='display: table-cell;width:100px;padding-right:10px;'>地點</div>
+							<div style='display: table-cell;width:inherit;padding-right:10px;'>最新留言</div>
+						</div>
 					</div>
-				</div>
 
-				<% @course_order[0..20].each do |cid| %>
-					<% @data.each do |d| %>
-						<% if d["courseid"].to_i == cid.to_i %>
-							<a class="list-group-item" href="<%= course_path(d["courseid"]) %>">
-								<div style='display: table-row;'>
-									<div style='display: table-cell;width:50px;'><%= d["semester"] %></div>
-									<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["courseid"] %></div>
-									<div style='display: table-cell;width:100px;padding-right:10px;color:#5383d3;'><%= d["name"] %></div>
-									<div style='display: table-cell;width:60px;padding-right:10px;'><%= d["department"] %></div>
-									<div style='display: table-cell;width:60px;padding-right:10px;'><%= d["choose"] %></div>
-									<div style='display: table-cell;width:50px;padding-right:10px;'><%= d["generalclass"] %></div>
-									<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["instructor"] %></div>
-									<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["session"] %></div>
-									<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["place"] %></div>
-									<div style='display: table-cell;width:inherit;padding-right:10px;'>
-										<% myIssues = [] %>
-										<% myComments = [] %>
-										<% @issues.each do |issue| %>
-											<% if issue.courseid == d["courseid"].to_i %>
-												<% myIssues.push(issue.content) %>
+					<% @course_order[0..20].each do |cid| %>
+						<% @data.each do |d| %>
+							<% if d["courseid"].to_i == cid.to_i %>
+								<a class="list-group-item" href="<%= course_path(d["courseid"]) %>">
+									<div style='display: table-row;'>
+										<div style='display: table-cell;width:50px;'><%= d["semester"] %></div>
+										<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["courseid"] %></div>
+										<div style='display: table-cell;width:100px;padding-right:10px;color:#5383d3;'><%= d["name"] %></div>
+										<div style='display: table-cell;width:60px;padding-right:10px;'><%= d["department"] %></div>
+										<div style='display: table-cell;width:60px;padding-right:10px;'><%= d["choose"] %></div>
+										<div style='display: table-cell;width:50px;padding-right:10px;'><%= d["generalclass"] %></div>
+										<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["instructor"] %></div>
+										<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["session"] %></div>
+										<div style='display: table-cell;width:100px;padding-right:10px;'><%= d["place"] %></div>
+										<div style='display: table-cell;width:inherit;padding-right:10px;'>
+											<% myIssues = [] %>
+											<% myComments = [] %>
+											<% @issues.each do |issue| %>
+												<% if issue.courseid == d["courseid"].to_i %>
+													<% myIssues.push(issue.content) %>
+												<% end %>
 											<% end %>
-										<% end %>
 
-										<% @comments.each do |comment| %>
-											<% if comment.courseid == d["courseid"].to_i %>
-												<% myComments.push(comment.content) %>
+											<% @comments.each do |comment| %>
+												<% if comment.courseid == d["courseid"].to_i %>
+													<% myComments.push(comment.content) %>
+												<% end %>
 											<% end %>
-										<% end %>
-										<strong><%= myIssues.last %></strong>
+											<strong><%= myIssues.last %></strong>
 
-										<% if myComments.length > 0 %>
-											<strong>/<%= myComments.last %></strong>
-										<% end %>
+											<% if myComments.length > 0 %>
+												<strong>/<%= myComments.last %></strong>
+											<% end %>
+										</div>
 									</div>
-								</div>
-							</a>
+								</a>
+							<% end %>
 						<% end %>
 					<% end %>
 				<% end %>
-				<% end %>
 				<!-- newest above -->
 
-				<%= paginate @courses, theme: 'twitter-bootstrap-4' %>
+				
 				<div class="list-group-item" style='background-color:#41cccc;color:white;font-weight: bold;margin-top: 30px;'>
 					<div style='display: table-row;'>
 						<div style='display: table-cell;width:50px;'>學期</div>

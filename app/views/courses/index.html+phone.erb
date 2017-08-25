@@ -61,8 +61,9 @@
 		<div class="list-group">
 			<%= paginate @courses, theme: 'twitter-bootstrap-4' %>
     		<% if (params[:page] == "1" || (params[:page].blank? && params[:search].blank? && params[:name].blank? && params[:instructor].blank? && params[:department].blank?)) %>        		
-			<h1 style='font-weight: 900;'>最新留言</h1>	
-
+			<div class="list-group-item" style='background-color:#41cccc;color:white;font-weight: bold;margin-top: 30px;'>
+				最新留言
+			</div>
 			<% @course_order[0..20].each do |cid| %>
 			<% @data.each do |d| %>
 				<% if d["courseid"].to_i == cid.to_i %>
@@ -115,7 +116,9 @@
 		<!-- newest above -->
 
 				
-
+		<div class="list-group-item" style='background-color:#41cccc;color:white;font-weight: bold;margin-top: 30px;'>
+			課程列表
+		</div>
 		<% @courses.each do |d| %>
 			<div class="list-group-item">
 				<div class='row'>

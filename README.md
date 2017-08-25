@@ -61,6 +61,9 @@ https://github.com/KamilDzierbicki/bootstrap4-kaminari-views
 * Simple Search
 http://www.korenlc.com/creating-a-simple-search-in-rails-4/
 
+* Migrations: change column from integer to string
+https://stackoverflow.com/questions/6834175/migrations-change-column-from-integer-to-string
+
 * 國立政治大學通識課程架構表
 http://aca.nccu.edu.tw/download/formDownload/QP-T04-19-03.pdf
 

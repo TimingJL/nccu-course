@@ -25,7 +25,8 @@ class CoursesController < ApplicationController
 
 		if params[:search]
 			@courses = Course.search(params[:search]).page(params[:page]).per(100)
-			#@courses = Course.page(params[:page]).per(100)
+		elsif params[:name] || params[:department] || params[:instructor]
+			@courses = Course.search_name(params[:name]).search_department(params[:department]).search_instructor(params[:instructor]).page(params[:page]).per(100)
 		else
 			@courses = Course.page(params[:page]).per(100)
 		end

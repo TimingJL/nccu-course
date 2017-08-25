@@ -87,7 +87,7 @@
         <div class='col-md-12'>
         	<div class="list-group">
         		<%= paginate @courses, theme: 'twitter-bootstrap-4' %>
-        		<% if (params[:page].to_i == 1 || params[:page] == nil) && params[:search] == nil %>        		
+        		<% if (params[:page].to_i == 1 || params[:page] == nil) %>        		
 					<h1 style='font-weight: 900;'>最新留言</h1>
 					<div class="list-group-item" style='background-color:#41cccc;color:white;font-weight: bold;'>
 						<div style='display: table-row;'>

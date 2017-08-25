@@ -62,20 +62,7 @@
 			<%= paginate @courses, theme: 'twitter-bootstrap-4' %>
     		<% if (params[:page] == "1" || (params[:page].blank? && params[:search].blank? && params[:name].blank? && params[:instructor].blank? && params[:department].blank?)) %>        		
 			<h1 style='font-weight: 900;'>最新留言</h1>	
-			<div class="list-group-item" style='background-color:#41cccc;color:white;font-weight: bold;margin-top: 30px;'>
-				<div style='display: table-row;'>
-					<div style='display: table-cell;width:50px;'>學期</div>
-					<div style='display: table-cell;width:100px;padding-right:10px;'>課程代碼</div>
-					<div style='display: table-cell;width:100px;padding-right:10px;'>課程名稱</div>
-					<div style='display: table-cell;width:60px;padding-right:10px;'>系所</div>
-					<div style='display: table-cell;width:60px;padding-right:10px;'>修別</div>
-					<div style='display: table-cell;width:50px;padding-right:10px;'>通識類別</div>
-					<div style='display: table-cell;width:100px;padding-right:10px;'>教師</div>
-					<div style='display: table-cell;width:100px;padding-right:10px;'>時間</div>
-					<div style='display: table-cell;width:100px;padding-right:10px;'>地點</div>
-					<div style='display: table-cell;width:inherit;padding-right:10px;'>最新留言</div>
-				</div>
-			</div>
+
 			<% @course_order[0..20].each do |cid| %>
 			<% @data.each do |d| %>
 				<% if d["courseid"].to_i == cid.to_i %>
@@ -128,20 +115,7 @@
 		<!-- newest above -->
 
 				
-		<div class="list-group-item" style='background-color:#41cccc;color:white;font-weight: bold;margin-top: 30px;'>
-			<div style='display: table-row;'>
-				<div style='display: table-cell;width:50px;'>學期</div>
-				<div style='display: table-cell;width:100px;padding-right:10px;'>課程代碼</div>
-				<div style='display: table-cell;width:100px;padding-right:10px;'>課程名稱</div>
-				<div style='display: table-cell;width:60px;padding-right:10px;'>系所</div>
-				<div style='display: table-cell;width:60px;padding-right:10px;'>修別</div>
-				<div style='display: table-cell;width:50px;padding-right:10px;'>通識類別</div>
-				<div style='display: table-cell;width:100px;padding-right:10px;'>教師</div>
-				<div style='display: table-cell;width:100px;padding-right:10px;'>時間</div>
-				<div style='display: table-cell;width:100px;padding-right:10px;'>地點</div>
-				<div style='display: table-cell;width:inherit;padding-right:10px;'>最新留言</div>
-			</div>
-		</div>
+
 		<% @courses.each do |d| %>
 			<div class="list-group-item">
 				<div class='row'>

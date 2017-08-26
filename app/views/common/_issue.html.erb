@@ -8,8 +8,8 @@
 					<tr>
 						<td style='vertical-align: text-top; width:60px'><canvas style='background-color: white;border-radius: 100%;' width="50" height="50" data-jdenticon-value="<%= issue.username %>"></canvas></td>
 						<td>
-							<div style='font-weight: bold;font-size: 16px;'><%= issue.username %></div>
-								<div style='font-size: 16px;margin-top:5px;margin-bottom:5px;'><%= simple_format issue.content %></div>
+							<div style='font-weight: bold;font-size: 16px;font-family:"微軟正黑體";'><%= issue.username %></div>
+								<div style='font-size: 16px;margin-top:5px;margin-bottom:5px;font-family:"微軟正黑體";'><%= simple_format issue.content %></div>
 								<%= link_to "讚", like_issue_path(issue), method: :get %> · 
                                 <%= link_to "收回讚", dislike_issue_path(issue), method: :get %> · 							
 								<%= link_to '回覆', new_comment_path(:courseid => issue.courseid, :issue_id => issue.id) %> · 

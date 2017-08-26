@@ -43,8 +43,8 @@
 										<tr>
 											<td style='vertical-align: text-top;border-radius: 100%; width:35px; text-align: center;'><canvas style='background-color: white;border-radius: 100%;' width="50" height="50" data-jdenticon-value="<%= comment.name %>"></canvas></td>
 											<td style='padding-left: 10px;'>
-												<p style='font-weight: bold;'><%= comment.name %></p>
-												<p><%= simple_format comment.content %></p>
+												<p style='font-weight: bold;font-family:"微軟正黑體";'><%= comment.name %></p>
+												<p style='font-family:"微軟正黑體";'><%= simple_format comment.content %></p>
 												<p>
 													<%= link_to "讚", like_comment_path(comment), method: :get %> · 
                                                     <%= link_to "收回讚", dislike_comment_path(comment), method: :get %> · 											

@@ -24,8 +24,6 @@ Rails.application.routes.draw do
   match 'users/:id' => 'users#edit', :via => :edit, :as => :admin_edit_user
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
 
-  get "/google19a6bb92bde3c76a.html" => redirect("/google19a6bb92bde3c76a.html")
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # root 'courses#index'
   #root 'issues#index'

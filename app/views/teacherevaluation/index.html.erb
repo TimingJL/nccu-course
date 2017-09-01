@@ -1,10 +1,10 @@
 <% @teacherevaluations.each do |t| %>
 	<% if t["instructor"].include?(params[:instructor]) %>
-		<div class='instructor-box'>
+		<div id='instructor-box'>
 			<div class='instructor-name'><%= t["instructor"] %></div>
 		</div>		
 		<% t["course"].each do |c| %>
-			<div class='evaluation-box'>
+			<div id='evaluation-box'>
 				<div style='font-size: 24px;margin-bottom: 20px;'>課程名稱: <%= c["name"] %></div>
 				<div class="row" style='margin-bottom: 20px;'>
 					<div class='col-md-2'>學期: <%= c["year"] %>/<%= c["semester"] %></div>

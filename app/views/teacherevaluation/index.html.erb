@@ -5,8 +5,8 @@
 		</div>		
 		<% t["course"].each do |c| %>
 			<div id='evaluation-box'>
-				<div style='font-size: 24px;margin-bottom: 20px;'>課程名稱: <%= c["name"] %></div>
-				<div class="row" style='margin-bottom: 20px;'>
+				<div>課程名稱: <%= c["name"] %></div>
+				<div class="row">
 					<div class='col-md-2'>學期: <%= c["year"] %>/<%= c["semester"] %></div>
 					<div class='col-md-4'>課程代碼: <%= c["id"] %></div>
 					<div class='col-md-2'>學生人數: <%= c["student_num"] %></div>

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   # get 'welcome/index'
   resources :courses
   resources :users
+  resources :teacherevaluation
 
   match 'users/:id' => 'users#edit', :via => :edit, :as => :admin_edit_user
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user

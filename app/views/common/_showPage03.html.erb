@@ -59,6 +59,7 @@
 					<% if @course["agenda"] != false %>
 						<%= link_to '教學大綱',@course["agenda"], class: 'btn btn-warning', style: 'color:white' %>
 					<% end %>
+					<%= link_to '教師評鑑',teacherevaluation_index_path(:instructor => @course["instructor"], :name => @course["name"] ), class: 'btn btn-warning', style: 'color:white' %>
 					<!-- <p><%= link_to 'Back', courses_path %></p> -->					
 				</div>
 			</div>			

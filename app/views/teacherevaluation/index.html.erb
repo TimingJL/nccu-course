@@ -1,0 +1,27 @@
+<% @teacherevaluations.each do |t| %>
+	<% if t["instructor"].include?(params[:instructor]) %>
+		<div class='instructor-box'>
+			<div class='instructor-name'><%= t["instructor"] %></div>
+		</div>		
+		<% t["course"].each do |c| %>
+			<div class='evaluation-box'>
+				<div style='font-size: 24px;margin-bottom: 20px;'>課程名稱: <%= c["name"] %></div>
+				<div class="row" style='margin-bottom: 20px;'>
+					<div class='col-md-2'>學期: <%= c["year"] %>/<%= c["semester"] %></div>
+					<div class='col-md-4'>課程代碼: <%= c["id"] %></div>
+					<div class='col-md-2'>學生人數: <%= c["student_num"] %></div>
+					<div class='col-md-2'>評分: <%= c["score"] %></div>
+				</div>
+
+				<div class="list-group">
+					<!-- <div>學生評語:</div>	 -->
+					<% for i in 0..c["comments"].length-1 %>
+						<a class="list-group-item">
+							<%= simple_format c["comments"][i], style: 'font-size: 18px;' %>
+						</a>
+					<% end %>
+				</div>		
+			</div>
+		<% end %>
+	<% end %>
+<% end %>

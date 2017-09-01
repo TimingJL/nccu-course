@@ -1,7 +1,7 @@
 <% @teacherevaluations.each do |t| %>
 	<% if t["instructor"].include?(params[:instructor]) %>
 		<div id='instructor-box'>
-			<div class='instructor-name'><%= t["instructor"] %></div>
+			<div id='instructor-name'><%= t["instructor"] %></div>
 		</div>		
 		<% t["course"].each do |c| %>
 			<div id='evaluation-box'>
@@ -17,7 +17,7 @@
 					<!-- <div>學生評語:</div>	 -->
 					<% for i in 0..c["comments"].length-1 %>
 						<a class="list-group-item">
-							<%= simple_format c["comments"][i], style: 'font-size: 18px;' %>
+							<%= simple_format c["comments"][i], style: 'font-size: 18px;font-family: '微軟正黑體', 'cwtexhei','Noto Sans', sans-serif;' %>
 						</a>
 					<% end %>
 				</div>		
@@ -35,12 +35,13 @@
 	font-family: '微軟正黑體', 'cwtexhei','Noto Sans', sans-serif;
 	font-size: 30px;
 	text-align: center;
-	.instructor-name{
-		background-color: #2ecc71;
-		padding: 20px;
-		color: white;
-		font-weight: 900;
-	}
+}
+
+#instructor-name{
+	background-color: #2ecc71;
+	padding: 20px;
+	color: white;
+	font-weight: 900;
 }
 
 #evaluation-box{

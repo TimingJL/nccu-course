@@ -47,28 +47,3 @@ html, body {
     /* 展開footer寬度 */
     width: 100%;
 }
-
-#instructor-box{
-    background-color: white;
-    margin:0 auto;
-    margin-top: 30px;
-    padding: 20px;
-    font-family: '微軟正黑體', 'cwtexhei','Noto Sans', sans-serif;
-    font-size: 30px;
-    text-align: center;
-    .instructor-name{
-        background-color: #2ecc71;
-        padding: 20px;
-        color: white;
-        font-weight: 900;
-    }
-}
-
-#evaluation-box{
-    background-color: white;
-    margin:0 auto;
-    margin-top: 30px;
-    padding: 20px;
-    font-family: '微軟正黑體', 'cwtexhei','Noto Sans', sans-serif;
-    font-size: 18px;
-}
